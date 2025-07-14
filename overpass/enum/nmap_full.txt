@@ -1,0 +1,12 @@
+# Nmap 7.95 scan initiated Mon Jul 14 00:12:55 2025 as: /usr/lib/nmap/nmap --privileged -sV -v -T4 -p- -oN nmap_full.txt 10.10.25.152
+Nmap scan report for 10.10.25.152
+Host is up (0.068s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jul 14 00:13:38 2025 -- 1 IP address (1 host up) scanned in 43.36 seconds

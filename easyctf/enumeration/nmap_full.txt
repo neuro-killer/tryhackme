@@ -1,0 +1,13 @@
+# Nmap 7.95 scan initiated Sun Jul 13 23:19:50 2025 as: /usr/lib/nmap/nmap --privileged -sV -v -T4 -p- -oN nmap_full.txt 10.10.82.195
+Nmap scan report for 10.10.82.195
+Host is up (0.054s latency).
+Not shown: 65532 filtered tcp ports (no-response)
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 3.0.3
+80/tcp   open  http    Apache httpd 2.4.18 ((Ubuntu))
+2222/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jul 13 23:21:31 2025 -- 1 IP address (1 host up) scanned in 101.92 seconds

