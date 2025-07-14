@@ -1,0 +1,28 @@
+# Nmap 7.95 scan initiated Mon Jul 14 00:37:39 2025 as: /usr/lib/nmap/nmap --privileged -sS -A -v -T4 -p80 -oN nmap_ss_Atxt 10.10.25.152
+Nmap scan report for 10.10.25.152
+Host is up (0.049s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Golang net/http server (Go-IPFS json-rpc or InfluxDB API)
+|_http-title: Overpass
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-favicon: Unknown favicon MD5: 0D4315E5A0B066CEFD5B216C8362564B
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running: Linux 4.X
+OS CPE: cpe:/o:linux:linux_kernel:4.15
+OS details: Linux 4.15
+Uptime guess: 10.027 days (since Thu Jul  3 23:59:24 2025)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=260 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT      ADDRESS
+1   48.08 ms 10.14.0.1
+2   49.64 ms 10.10.25.152
+
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jul 14 00:37:49 2025 -- 1 IP address (1 host up) scanned in 9.84 seconds

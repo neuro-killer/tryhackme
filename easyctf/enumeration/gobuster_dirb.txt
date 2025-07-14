@@ -1,0 +1,7 @@
+/.htaccess           [33m (Status: 403)[0m [Size: 296]
+/.htpasswd           [33m (Status: 403)[0m [Size: 296]
+/.hta                [33m (Status: 403)[0m [Size: 291]
+/index.html          [32m (Status: 200)[0m [Size: 11321]
+/robots.txt          [32m (Status: 200)[0m [Size: 929]
+/server-status       [33m (Status: 403)[0m [Size: 300]
+/simple              [36m (Status: 301)[0m [Size: 313][34m [--> http://10.10.82.195/simple/][0m
