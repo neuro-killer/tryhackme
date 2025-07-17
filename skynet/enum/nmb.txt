@@ -1,0 +1,11 @@
+Looking up status of 10.10.46.157
+	SKYNET          <00> -         B <ACTIVE> 
+	SKYNET          <03> -         B <ACTIVE> 
+	SKYNET          <20> -         B <ACTIVE> 
+	..__MSBROWSE__. <01> - <GROUP> B <ACTIVE> 
+	WORKGROUP       <00> - <GROUP> B <ACTIVE> 
+	WORKGROUP       <1d> -         B <ACTIVE> 
+	WORKGROUP       <1e> - <GROUP> B <ACTIVE> 
+
+	MAC Address = 00-00-00-00-00-00
+

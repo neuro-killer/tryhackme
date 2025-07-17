@@ -1,0 +1,28 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.46.157/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/admin                (Status: 301) [Size: 312] [--> http://10.10.46.157/admin/]
+[2K/config               (Status: 301) [Size: 313] [--> http://10.10.46.157/config/]
+[2K/css                  (Status: 301) [Size: 310] [--> http://10.10.46.157/css/]
+[2K/.hta                 (Status: 403) [Size: 277]
+[2K/.htaccess            (Status: 403) [Size: 277]
+[2K/.htpasswd            (Status: 403) [Size: 277]
+[2K/index.html           (Status: 200) [Size: 523]
+[2K/js                   (Status: 301) [Size: 309] [--> http://10.10.46.157/js/]
+[2K/server-status        (Status: 403) [Size: 277]
+[2K/squirrelmail         (Status: 301) [Size: 319] [--> http://10.10.46.157/squirrelmail/]
+
+===============================================================
+Finished
+===============================================================

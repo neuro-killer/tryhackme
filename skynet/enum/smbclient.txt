@@ -1,0 +1,15 @@
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	print$          Disk      Printer Drivers
+	anonymous       Disk      Skynet Anonymous Share
+	milesdyson      Disk      Miles Dyson Personal Share
+	IPC$            IPC       IPC Service (skynet server (Samba, Ubuntu))
+Reconnecting with SMB1 for workgroup listing.
+
+	Server               Comment
+	---------            -------
+
+	Workgroup            Master
+	---------            -------
+	WORKGROUP            SKYNET

@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Date: Thu, 17 Jul 2025 00:27:26 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Set-Cookie: SQMSESSID=i5ffqrgq026kgv4d9boi2q2kq7; path=/squirrelmail/
+Expires: Sat, 1 Jan 2000 00:00:00 GMT
+Cache-Control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+Set-Cookie: SQMSESSID=i5ffqrgq026kgv4d9boi2q2kq7; path=/squirrelmail/; HttpOnly
+Set-Cookie: SQMSESSID=kebhrp8tdggaa6pb8c6j3434j4; path=/squirrelmail/
+Set-Cookie: SQMSESSID=kebhrp8tdggaa6pb8c6j3434j4; path=/squirrelmail/; HttpOnly
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/html; charset=iso-8859-1
+

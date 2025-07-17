@@ -1,0 +1,13 @@
+# Nmap 7.95 scan initiated Thu Jul 17 01:43:24 2025 as: /usr/lib/nmap/nmap --privileged -sU --top-ports 1000 -oN nmap_udp.txt -vv 10.10.46.157
+Increasing send delay for 10.10.46.157 from 800 to 1000 due to 11 out of 32 dropped probes since last increase.
+Nmap scan report for 10.10.46.157
+Host is up, received echo-reply ttl 63 (0.077s latency).
+Scanned at 2025-07-17 01:43:41 CEST for 1022s
+Not shown: 997 closed udp ports (port-unreach)
+PORT    STATE         SERVICE     REASON
+68/udp  open|filtered dhcpc       no-response
+137/udp open          netbios-ns  udp-response ttl 63
+138/udp open|filtered netbios-dgm no-response
+
+Read data files from: /usr/share/nmap
+# Nmap done at Thu Jul 17 02:00:43 2025 -- 1 IP address (1 host up) scanned in 1038.35 seconds
