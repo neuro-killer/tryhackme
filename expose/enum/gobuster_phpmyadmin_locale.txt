@@ -1,0 +1,59 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.120.144:1337/phpmyadmin/locale
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/.hta                 (Status: 403) [Size: 280]
+[2K/.htaccess            (Status: 403) [Size: 280]
+[2K/ar                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/ar/]
+[2K/az                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/az/]
+[2K/be                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/be/]
+[2K/bg                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/bg/]
+[2K/ca                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/ca/]
+[2K/cs                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/cs/]
+[2K/da                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/da/]
+[2K/de                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/de/]
+[2K/el                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/el/]
+[2K/es                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/es/]
+[2K/et                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/et/]
+[2K/fi                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/fi/]
+[2K/fr                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/fr/]
+[2K/gl                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/gl/]
+[2K/hu                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/hu/]
+[2K/ia                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/ia/]
+[2K/id                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/id/]
+[2K/it                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/it/]
+[2K/ja                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/ja/]
+[2K/ko                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/ko/]
+[2K/lt                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/lt/]
+[2K/nl                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/nl/]
+[2K/pl                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/pl/]
+[2K/pt                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/pt/]
+[2K/pt_BR                (Status: 301) [Size: 339] [--> http://10.10.120.144:1337/phpmyadmin/locale/pt_BR/]
+[2K/ro                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/ro/]
+[2K/ru                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/ru/]
+[2K/si                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/si/]
+[2K/sk                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/sk/]
+[2K/sl                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/sl/]
+[2K/sq                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/sq/]
+[2K/sv                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/sv/]
+[2K/th                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/th/]
+[2K/tr                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/tr/]
+[2K/uk                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/uk/]
+[2K/vi                   (Status: 301) [Size: 336] [--> http://10.10.120.144:1337/phpmyadmin/locale/vi/]
+[2K/zh_CN                (Status: 301) [Size: 339] [--> http://10.10.120.144:1337/phpmyadmin/locale/zh_CN/]
+[2K/zh_TW                (Status: 301) [Size: 339] [--> http://10.10.120.144:1337/phpmyadmin/locale/zh_TW/]
+[2K/.htpasswd            (Status: 403) [Size: 280]
+
+===============================================================
+Finished
+===============================================================

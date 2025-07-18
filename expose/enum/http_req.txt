@@ -1,0 +1,16 @@
+POST /admin_101/includes/user_login.php HTTP/1.1
+Host: 10.10.6.73:1337
+Content-Length: 38
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: */*
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Sec-GPC: 1
+Accept-Language: en-US,en;q=0.9
+Origin: http://10.10.6.73:1337
+Referer: http://10.10.6.73:1337/admin_101/
+Accept-Encoding: gzip, deflate, br
+Cookie: PHPSESSID=5k0dokl3ec1ai53l9a055a548i
+Connection: keep-alive
+
+email=hacker%40root.thm&password=admin

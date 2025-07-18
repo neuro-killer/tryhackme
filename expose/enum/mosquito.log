@@ -1,0 +1,63 @@
+--- Mosquitto 1.6.9 Vulnerability Scan ---
+Target: 10.10.186.2:1883
+
+[*] Test 1: Checking for Unauthenticated Access...
+[+] Unauthenticated access: ENABLED. This is a significant vulnerability.
+
+[*] Test 2: Checking for Common Default Credentials...
+[+] Default credentials found: Username='admin', Password='password'. This is a critical vulnerability.
+[+] Default credentials found: Username='admin', Password='admin'. This is a critical vulnerability.
+[+] Default credentials found: Username='root', Password='password'. This is a critical vulnerability.
+[+] Default credentials found: Username='root', Password='admin'. This is a critical vulnerability.
+[+] Default credentials found: Username='guest', Password='guest'. This is a critical vulnerability.
+[+] Default credentials found: Username='mosquitto', Password='mosquitto'. This is a critical vulnerability.
+[+] Default credentials found: Username='user', Password='password'. This is a critical vulnerability.
+[+] Default credentials found: Username='', Password=''. This is a critical vulnerability.
+
+--- Performing further tests with unauthenticated access ---
+
+[*] Test 3: Checking Publish Permission (unauthenticated)...
+[+] Publish to 'test/vuln_check/message' successful (Message ID: 1).
+
+[*] Test 4: Checking System Topic Subscription (unauthenticated)...
+[*] Listening on '$SYS/#' for 10 seconds...
+[*] Subscribing to '$SYS/#'...
+[+] Received 35 messages from system topics. Information exposed:
+    - SYS Topic: $SYS/broker/version | Message: mosquitto version 1.6.9
+    - SYS Topic: $SYS/broker/uptime | Message: 5698 seconds
+    - SYS Topic: $SYS/broker/load/messages/received/1min | Message: 36.77
+    - SYS Topic: $SYS/broker/load/messages/received/5min | Message: 15.26
+    - SYS Topic: $SYS/broker/load/messages/received/15min | Message: 6.21
+    - SYS Topic: $SYS/broker/load/messages/sent/1min | Message: 32.73
+    - SYS Topic: $SYS/broker/load/messages/sent/5min | Message: 18.00
+    - SYS Topic: $SYS/broker/load/messages/sent/15min | Message: 7.64
+    - SYS Topic: $SYS/broker/load/publish/received/1min | Message: 1.09
+    - SYS Topic: $SYS/broker/load/publish/received/5min | Message: 0.34
+    - SYS Topic: $SYS/broker/load/publish/received/15min | Message: 0.13
+    - SYS Topic: $SYS/broker/load/publish/sent/1min | Message: 13.45
+    - SYS Topic: $SYS/broker/load/publish/sent/5min | Message: 9.83
+    - SYS Topic: $SYS/broker/load/publish/sent/15min | Message: 4.30
+    - SYS Topic: $SYS/broker/load/bytes/received/1min | Message: 865.12
+    - SYS Topic: $SYS/broker/load/bytes/received/5min | Message: 355.74
+    - SYS Topic: $SYS/broker/load/bytes/received/15min | Message: 144.73
+    - SYS Topic: $SYS/broker/load/bytes/sent/1min | Message: 615.71
+    - SYS Topic: $SYS/broker/load/bytes/sent/5min | Message: 426.96
+    - SYS Topic: $SYS/broker/load/bytes/sent/15min | Message: 185.71
+    - SYS Topic: $SYS/broker/load/sockets/1min | Message: 17.80
+    - SYS Topic: $SYS/broker/load/sockets/5min | Message: 7.54
+    - SYS Topic: $SYS/broker/load/sockets/15min | Message: 3.09
+    - SYS Topic: $SYS/broker/load/connections/1min | Message: 17.80
+    - SYS Topic: $SYS/broker/load/connections/5min | Message: 7.54
+    - SYS Topic: $SYS/broker/load/connections/15min | Message: 3.09
+    - SYS Topic: $SYS/broker/messages/received | Message: 121
+    - SYS Topic: $SYS/broker/messages/sent | Message: 197
+    - SYS Topic: $SYS/broker/store/messages/bytes | Message: 197
+    - SYS Topic: $SYS/broker/heap/current | Message: 49336
+    - SYS Topic: $SYS/broker/publish/messages/received | Message: 3
+    - SYS Topic: $SYS/broker/publish/bytes/received | Message: 80
+    - SYS Topic: $SYS/broker/bytes/received | Message: 2618
+    - SYS Topic: $SYS/broker/bytes/sent | Message: 5463
+    - SYS Topic: $SYS/broker/uptime | Message: 5709 seconds
+
+--- Scan Complete ---
+Review the output for any 'ENABLED' or 'SUCCESS' messages, especially for unauthenticated access or exposed system information.

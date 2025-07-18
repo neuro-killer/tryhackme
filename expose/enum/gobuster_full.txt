@@ -1,0 +1,25 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.23.93:1337
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Extensions:              bak,old,md,jsp,action,do,htm,zip,log,py,aspx,php,js,json,ini,cgi,pl,txt,tar.gz,conf,inc,sql,env,sh,asp,html,xml
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/index.php            (Status: 200) [Size: 91]
+[2K/.html                (Status: 403) [Size: 278]
+[2K/.htm                 (Status: 403) [Size: 278]
+[2K/.php                 (Status: 403) [Size: 278]
+[2K/admin                (Status: 301) [Size: 317] [--> http://10.10.23.93:1337/admin/]
+[2K/javascript           (Status: 301) [Size: 322] [--> http://10.10.23.93:1337/javascript/]
+[2K/phpmyadmin           (Status: 301) [Size: 322] [--> http://10.10.23.93:1337/phpmyadmin/]
+[2K/.htm                 (Status: 403) [Size: 278]
+[2K/.php                 (Status: 403) [Size: 278]
+[2K/.html                (Status: 403) [Size: 278]

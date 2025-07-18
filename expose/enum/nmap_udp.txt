@@ -1,0 +1,1 @@
+# Nmap 7.95 scan initiated Fri Jul 18 14:49:35 2025 as: /usr/lib/nmap/nmap --privileged -v -sU --top-ports 1000 -T4 -oN nmap_udp.txt 10.10.186.2

