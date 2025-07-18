@@ -1,0 +1,91 @@
+[+] Starting scan against: http://10.10.120.144:1337
+[+] Using wordlist: /usr/share/seclists/Discovery/Web-Content/common.txt
+[+] Output log: ssrf_log_20250717_163909.txt
+
+
+[+] Found 8 paths:
+[+] Found path: http://10.10.120.144:1337/admin (Status: 200)
+[+] Found path: http://10.10.120.144:1337/.hta (Status: 403)
+[+] Found path: http://10.10.120.144:1337/.htaccess (Status: 403)
+[+] Found path: http://10.10.120.144:1337/.htpasswd (Status: 403)
+[+] Found path: http://10.10.120.144:1337/index.php (Status: 200)
+[+] Found path: http://10.10.120.144:1337/javascript (Status: 403)
+[+] Found path: http://10.10.120.144:1337/phpmyadmin (Status: 200)
+[+] Found path: http://10.10.120.144:1337/server-status (Status: 403)
+
+[+] Testing 8 paths for SSRF...
+
+  [>] Testing url: ext(200/1534) vs int(200/1534)
+  [>] Testing path: ext(200/1534) vs int(200/1534)
+  [>] Testing redirect: ext(200/1534) vs int(200/1534)
+  [>] Testing dest: ext(200/1534) vs int(200/1534)
+  [>] Testing next: ext(200/1534) vs int(200/1534)
+  [>] Testing data: ext(200/1534) vs int(200/1534)
+  [>] Testing link: ext(200/1534) vs int(200/1534)
+  [>] Testing target: ext(200/1534) vs int(200/1534)
+  [>] Testing url: ext(403/280) vs int(403/280)
+  [>] Testing path: ext(403/280) vs int(403/280)
+  [>] Testing redirect: ext(403/280) vs int(403/280)
+  [>] Testing dest: ext(403/280) vs int(403/280)
+  [>] Testing next: ext(403/280) vs int(403/280)
+  [>] Testing data: ext(403/280) vs int(403/280)
+  [>] Testing link: ext(403/280) vs int(403/280)
+  [>] Testing target: ext(403/280) vs int(403/280)
+  [>] Testing url: ext(403/280) vs int(403/280)
+  [>] Testing path: ext(403/280) vs int(403/280)
+  [>] Testing redirect: ext(403/280) vs int(403/280)
+  [>] Testing dest: ext(403/280) vs int(403/280)
+  [>] Testing next: ext(403/280) vs int(403/280)
+  [>] Testing data: ext(403/280) vs int(403/280)
+  [>] Testing link: ext(403/280) vs int(403/280)
+  [>] Testing target: ext(403/280) vs int(403/280)
+  [>] Testing url: ext(403/280) vs int(403/280)
+  [>] Testing path: ext(403/280) vs int(403/280)
+  [>] Testing redirect: ext(403/280) vs int(403/280)
+  [>] Testing dest: ext(403/280) vs int(403/280)
+  [>] Testing next: ext(403/280) vs int(403/280)
+  [>] Testing data: ext(403/280) vs int(403/280)
+  [>] Testing link: ext(403/280) vs int(403/280)
+  [>] Testing target: ext(403/280) vs int(403/280)
+  [>] Testing url: ext(200/91) vs int(200/91)
+  [>] Testing path: ext(200/91) vs int(200/91)
+  [>] Testing redirect: ext(200/91) vs int(200/91)
+  [>] Testing dest: ext(200/91) vs int(200/91)
+  [>] Testing next: ext(200/91) vs int(200/91)
+  [>] Testing data: ext(200/91) vs int(200/91)
+  [>] Testing link: ext(200/91) vs int(None/0)
+  [!!!] Potential SSRF at: http://10.10.120.144:1337/index.php?link=http://127.0.0.1
+  [>] Testing target: ext(200/91) vs int(200/91)
+  [>] Testing url: ext(403/280) vs int(403/280)
+  [>] Testing path: ext(403/280) vs int(403/280)
+  [>] Testing redirect: ext(403/280) vs int(403/280)
+  [>] Testing dest: ext(403/280) vs int(403/280)
+  [>] Testing next: ext(403/280) vs int(403/280)
+  [>] Testing data: ext(None/0) vs int(None/0)
+  [>] Testing link: ext(403/280) vs int(403/280)
+  [>] Testing target: ext(403/280) vs int(403/280)
+  [>] Testing url: ext(200/14773) vs int(200/14773)
+  [>] Testing path: ext(None/0) vs int(200/14773)
+  [!!!] Potential SSRF at: http://10.10.120.144:1337/phpmyadmin?path=http://127.0.0.1
+  [>] Testing redirect: ext(200/14773) vs int(200/14773)
+  [>] Testing dest: ext(None/0) vs int(200/14773)
+  [!!!] Potential SSRF at: http://10.10.120.144:1337/phpmyadmin?dest=http://127.0.0.1
+  [>] Testing next: ext(None/0) vs int(200/14773)
+  [!!!] Potential SSRF at: http://10.10.120.144:1337/phpmyadmin?next=http://127.0.0.1
+  [>] Testing data: ext(None/0) vs int(200/14773)
+  [!!!] Potential SSRF at: http://10.10.120.144:1337/phpmyadmin?data=http://127.0.0.1
+  [>] Testing link: ext(None/0) vs int(200/14773)
+  [!!!] Potential SSRF at: http://10.10.120.144:1337/phpmyadmin?link=http://127.0.0.1
+  [>] Testing target: ext(200/14782) vs int(200/14780)
+  [!!!] Potential SSRF at: http://10.10.120.144:1337/phpmyadmin?target=http://127.0.0.1
+  [>] Testing url: ext(403/280) vs int(403/280)
+  [>] Testing path: ext(403/280) vs int(403/280)
+  [>] Testing redirect: ext(403/280) vs int(403/280)
+  [>] Testing dest: ext(403/280) vs int(403/280)
+  [>] Testing next: ext(403/280) vs int(403/280)
+  [>] Testing data: ext(403/280) vs int(403/280)
+  [>] Testing link: ext(403/280) vs int(403/280)
+  [>] Testing target: ext(403/280) vs int(403/280)
+
+[+] Scan completed.
+

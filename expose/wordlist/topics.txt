@@ -1,0 +1,7 @@
+devices/cmd
+devices/exec
+devices/logs
+admin/cmd
+skynet/input
+skynet/command
+sensor/temp

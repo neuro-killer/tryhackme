@@ -1,0 +1,55 @@
+# Nmap 7.95 scan initiated Fri Jul 18 17:11:54 2025 as: /usr/lib/nmap/nmap --privileged -sV -T4 -p 1883,8883,9001 --script mqtt* -oN nmap_1883.txt 10.10.23.93
+Nmap scan report for 10.10.23.93
+Host is up (0.046s latency).
+
+PORT     STATE  SERVICE                 VERSION
+1883/tcp open   mosquitto version 1.6.9
+| mqtt-subscribe: 
+|   Topics and their most recent payloads: 
+|     $SYS/broker/load/bytes/received/5min: 30.09
+|     $SYS/broker/load/publish/sent/1min: 52.61
+|     $SYS/broker/clients/total: 4
+|     $SYS/broker/load/bytes/received/1min: 103.07
+|     $SYS/broker/clients/connected: 3
+|     $SYS/broker/load/sockets/1min: 2.64
+|     $SYS/broker/load/messages/received/1min: 6.15
+|     $SYS/broker/load/publish/sent/15min: 4.51
+|     $SYS/broker/load/messages/sent/15min: 6.18
+|     $SYS/broker/load/connections/5min: 0.77
+|     $SYS/broker/load/publish/sent/5min: 13.00
+|     $SYS/broker/publish/messages/sent: 69
+|     $SYS/broker/load/sockets/5min: 0.76
+|     $SYS/broker/load/bytes/received/15min: 12.81
+|     $SYS/broker/retained messages/count: 42
+|     $SYS/broker/load/messages/sent/1min: 58.23
+|     $SYS/broker/load/messages/sent/5min: 15.85
+|     $SYS/broker/messages/sent: 110
+|     $SYS/broker/heap/current: 54440
+|     $SYS/broker/clients/disconnected: 1
+|     $SYS/broker/load/bytes/sent/1min: 2066.22
+|     $SYS/broker/load/bytes/sent/15min: 179.65
+|     $SYS/broker/messages/stored: 42
+|     $SYS/broker/version: mosquitto version 1.6.9
+|     $SYS/broker/uptime: 1430 seconds
+|     $SYS/broker/subscriptions/count: 6
+|     $SYS/broker/store/messages/count: 42
+|     $SYS/broker/messages/received: 42
+|     $SYS/broker/clients/maximum: 4
+|     $SYS/broker/store/messages/bytes: 176
+|     $SYS/broker/bytes/sent: 2787
+|     $SYS/broker/publish/bytes/sent: 288
+|     $SYS/broker/load/bytes/sent/5min: 513.54
+|     $SYS/broker/load/connections/1min: 2.88
+|     $SYS/broker/clients/active: 3
+|     $SYS/broker/heap/maximum: 54840
+|     $SYS/broker/bytes/received: 264
+|     $SYS/broker/load/sockets/15min: 0.31
+|     $SYS/broker/load/connections/15min: 0.31
+|     $SYS/broker/clients/inactive: 1
+|     $SYS/broker/load/messages/received/5min: 3.03
+|_    $SYS/broker/load/messages/received/15min: 1.74
+8883/tcp closed secure-mqtt
+9001/tcp closed tor-orport
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jul 18 17:12:13 2025 -- 1 IP address (1 host up) scanned in 18.60 seconds

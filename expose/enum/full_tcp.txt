@@ -1,0 +1,90 @@
+# Nmap 7.95 scan initiated Fri Jul 18 17:43:53 2025 as: /usr/lib/nmap/nmap -p- -T4 -n -A -Pn -oN full_tcp.txt 10.10.23.93
+Nmap scan report for 10.10.23.93
+Host is up (0.046s latency).
+Not shown: 65530 closed tcp ports (reset)
+PORT     STATE SERVICE                 VERSION
+21/tcp   open  ftp                     vsftpd 2.0.8 or later
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.14.106.115
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+22/tcp   open  ssh                     OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 fd:ee:c3:4a:57:46:b2:5d:eb:85:24:5d:6a:6b:c2:2b (RSA)
+|   256 e2:80:d8:5d:c0:76:40:70:d9:6f:be:f5:c7:0d:fc:5d (ECDSA)
+|_  256 b7:f8:58:47:c3:42:cc:c9:62:22:c0:c6:db:3d:0d:d4 (ED25519)
+53/tcp   open  domain                  ISC BIND 9.16.1 (Ubuntu Linux)
+| dns-nsid: 
+|_  bind.version: 9.16.1-Ubuntu
+1337/tcp open  http                    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: EXPOSED
+1883/tcp open  mosquitto version 1.6.9
+| mqtt-subscribe: 
+|   Topics and their most recent payloads: 
+|     $SYS/broker/retained messages/count: 38
+|     $SYS/broker/messages/received: 2370
+|     $SYS/broker/load/bytes/sent/5min: 2555.14
+|     $SYS/broker/clients/active: 3
+|     $SYS/broker/load/messages/received/1min: 10.57
+|     $SYS/broker/load/bytes/sent/15min: 1907.90
+|     $SYS/broker/load/bytes/received/15min: 1232.55
+|     $SYS/broker/load/bytes/received/5min: 1617.78
+|     $SYS/broker/load/sockets/1min: 3.52
+|     $SYS/broker/load/messages/sent/15min: 106.86
+|     $SYS/broker/load/sockets/5min: 42.75
+|     $SYS/broker/load/publish/received/5min: 42.13
+|     $SYS/broker/publish/messages/sent: 1880
+|     $SYS/broker/load/bytes/received/1min: 134.77
+|     $SYS/broker/load/publish/received/1min: 1.82
+|     $SYS/broker/uptime: 3377 seconds
+|     $SYS/broker/publish/bytes/sent: 9794
+|     $SYS/broker/heap/current: 56144
+|     $SYS/broker/store/messages/bytes: 195
+|     $SYS/broker/load/messages/received/5min: 129.52
+|     $SYS/broker/bytes/received: 29615
+|     $SYS/broker/clients/total: 6
+|     $SYS/broker/subscriptions/count: 10
+|     $SYS/broker/load/messages/sent/1min: 39.87
+|     $SYS/broker/load/publish/sent/15min: 72.36
+|     $SYS/broker/clients/maximum: 6
+|     $SYS/broker/load/publish/received/15min: 31.76
+|     $SYS/broker/messages/stored: 35
+|     $SYS/broker/load/publish/sent/5min: 97.18
+|     $SYS/broker/bytes/sent: 53439
+|     $SYS/broker/messages/sent: 2761
+|     $SYS/broker/load/connections/15min: 32.25
+|     $SYS/broker/clients/connected: 3
+|     $SYS/broker/load/publish/sent/1min: 32.96
+|     $SYS/broker/load/connections/1min: 3.52
+|     $SYS/broker/load/bytes/sent/1min: 1346.97
+|     $SYS/broker/load/messages/received/15min: 98.27
+|     $SYS/broker/version: mosquitto version 1.6.9
+|     $SYS/broker/store/messages/count: 35
+|     $SYS/broker/load/messages/sent/5min: 142.33
+|     $SYS/broker/load/connections/5min: 42.76
+|_    $SYS/broker/load/sockets/15min: 32.25
+Device type: general purpose
+Running: Linux 4.X
+OS CPE: cpe:/o:linux:linux_kernel:4.15
+OS details: Linux 4.15
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 199/tcp)
+HOP RTT      ADDRESS
+1   45.65 ms 10.14.0.1
+2   46.29 ms 10.10.23.93
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jul 18 17:44:40 2025 -- 1 IP address (1 host up) scanned in 47.32 seconds

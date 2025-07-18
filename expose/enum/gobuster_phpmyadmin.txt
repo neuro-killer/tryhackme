@@ -1,0 +1,31 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.120.144:1337/phpmyadmin/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/.hta                 (Status: 403) [Size: 280]
+[2K/.htpasswd            (Status: 403) [Size: 280]
+[2K/.htaccess            (Status: 403) [Size: 280]
+[2K/doc                  (Status: 301) [Size: 330] [--> http://10.10.120.144:1337/phpmyadmin/doc/]
+[2K/favicon.ico          (Status: 200) [Size: 22486]
+[2K/index.php            (Status: 200) [Size: 14773]
+[2K/js                   (Status: 301) [Size: 329] [--> http://10.10.120.144:1337/phpmyadmin/js/]
+[2K/libraries            (Status: 403) [Size: 280]
+[2K/locale               (Status: 301) [Size: 333] [--> http://10.10.120.144:1337/phpmyadmin/locale/]
+[2K/phpinfo.php          (Status: 200) [Size: 14775]
+[2K/sql                  (Status: 301) [Size: 330] [--> http://10.10.120.144:1337/phpmyadmin/sql/]
+[2K/templates            (Status: 403) [Size: 280]
+[2K/themes               (Status: 301) [Size: 333] [--> http://10.10.120.144:1337/phpmyadmin/themes/]
+
+===============================================================
+Finished
+===============================================================

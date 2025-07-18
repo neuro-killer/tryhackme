@@ -1,0 +1,40 @@
+$SYS/broker/version mosquitto version 1.6.9
+$SYS/broker/uptime 1716 seconds
+$SYS/broker/clients/total 4
+$SYS/broker/clients/active 2
+$SYS/broker/clients/connected 2
+$SYS/broker/load/messages/received/1min 15.73
+$SYS/broker/load/messages/received/5min 7.44
+$SYS/broker/load/messages/received/15min 3.75
+$SYS/broker/load/messages/sent/1min 121.78
+$SYS/broker/load/messages/sent/5min 42.28
+$SYS/broker/load/messages/sent/15min 18.15
+$SYS/broker/load/publish/received/1min 0.10
+$SYS/broker/load/publish/sent/1min 111.11
+$SYS/broker/load/publish/sent/5min 36.79
+$SYS/broker/load/publish/sent/15min 15.18
+$SYS/broker/load/bytes/received/1min 146.15
+$SYS/broker/load/bytes/received/5min 63.47
+$SYS/broker/load/bytes/received/15min 29.06
+$SYS/broker/load/bytes/sent/1min 4445.80
+$SYS/broker/load/bytes/sent/5min 1469.31
+$SYS/broker/load/bytes/sent/15min 606.35
+$SYS/broker/load/sockets/1min 4.61
+$SYS/broker/load/sockets/5min 1.94
+$SYS/broker/load/sockets/15min 0.85
+$SYS/broker/load/connections/1min 4.61
+$SYS/broker/load/connections/5min 1.95
+$SYS/broker/load/connections/15min 0.85
+$SYS/broker/messages/stored 40
+$SYS/broker/messages/received 83
+$SYS/broker/messages/sent 331
+$SYS/broker/store/messages/count 40
+$SYS/broker/store/messages/bytes 185
+$SYS/broker/subscriptions/count 6
+$SYS/broker/retained messages/count 40
+$SYS/broker/heap/current 51160
+$SYS/broker/heap/maximum 57712
+$SYS/broker/publish/messages/sent 261
+$SYS/broker/publish/bytes/sent 1126
+$SYS/broker/bytes/received 582
+$SYS/broker/bytes/sent 10458

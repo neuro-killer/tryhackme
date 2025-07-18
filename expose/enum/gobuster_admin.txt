@@ -1,0 +1,24 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.23.93:1337/admin/
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /usr/share/seclists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/assets               (Status: 301) [Size: 324] [--> http://10.10.23.93:1337/admin/assets/]
+[2K/index.php            (Status: 200) [Size: 1534]
+[2K/.hta                 (Status: 403) [Size: 278]
+[2K/.htpasswd            (Status: 403) [Size: 278]
+[2K/.htaccess            (Status: 403) [Size: 278]
+[2K/modules              (Status: 301) [Size: 325] [--> http://10.10.23.93:1337/admin/modules/]
+
+===============================================================
+Finished
+===============================================================
