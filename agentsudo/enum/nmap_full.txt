@@ -1,0 +1,71 @@
+# Nmap 7.95 scan initiated Sat Jul 19 01:35:07 2025 as: /usr/lib/nmap/nmap --privileged -sV -T4 -A -p21,22,80 -oN nmap_full.txt -vv 10.10.11.80
+adjust_timeouts2: packet supposedly had rtt of -1044494 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -1044494 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -1033754 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -1033754 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -1008539 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -1008539 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -646212 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -646212 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -645611 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -645611 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -620101 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -620101 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -398537 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -398537 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -178777 microseconds.  Ignoring time.
+adjust_timeouts2: packet supposedly had rtt of -178777 microseconds.  Ignoring time.
+Nmap scan report for 10.10.11.80
+Host is up, received reset ttl 63 (0.065s latency).
+Scanned at 2025-07-19 01:35:07 CEST for 15s
+
+PORT   STATE SERVICE REASON         VERSION
+21/tcp open  ftp     syn-ack ttl 63 vsftpd 3.0.3
+22/tcp open  ssh     syn-ack ttl 63 OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 ef:1f:5d:04:d4:77:95:06:60:72:ec:f0:58:f2:cc:07 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5hdrxDB30IcSGobuBxhwKJ8g+DJcUO5xzoaZP/vJBtWoSf4nWDqaqlJdEF0Vu7Sw7i0R3aHRKGc5mKmjRuhSEtuKKjKdZqzL3xNTI2cItmyKsMgZz+lbMnc3DouIHqlh748nQknD/28+RXREsNtQZtd0VmBZcY1TD0U4XJXPiwleilnsbwWA7pg26cAv9B7CcaqvMgldjSTdkT1QNgrx51g4IFxtMIFGeJDh2oJkfPcX6KDcYo6c9W1l+SCSivAQsJ1dXgA2bLFkG/wPaJaBgCzb8IOZOfxQjnIqBdUNFQPlwshX/nq26BMhNGKMENXJUpvUTshoJ/rFGgZ9Nj31r
+|   256 5e:02:d1:9a:c4:e7:43:06:62:c1:9e:25:84:8a:e7:ea (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHdSVnnzMMv6VBLmga/Wpb94C9M2nOXyu36FCwzHtLB4S4lGXa2LzB5jqnAQa0ihI6IDtQUimgvooZCLNl6ob68=
+|   256 2d:00:5c:b9:fd:a8:c8:d8:80:e3:92:4f:8b:4f:18:e2 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOL3wRjJ5kmGs/hI4aXEwEndh81Pm/fvo8EvcpDHR5nt
+80/tcp open  http    syn-ack ttl 63 Apache httpd 2.4.29 ((Ubuntu))
+|_http-title: Annoucement
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+OS fingerprint not ideal because: Missing a closed TCP port so results incomplete
+Aggressive OS guesses: Linux 4.15 (98%), Linux 3.2 - 4.14 (96%), Linux 4.4 (95%), Linux 4.15 - 5.19 (95%), Linux 3.10 - 3.13 (95%), Linux 2.6.32 - 3.10 (95%), Linux 3.11 - 3.14 (92%), Linux 3.7 - 4.19 (92%), Ruckus ZoneFlex R710 WAP (Linux 3.4) (92%), Linux 3.10 (92%)
+No exact OS matches for host (test conditions non-ideal).
+TCP/IP fingerprint:
+SCAN(V=7.95%E=4%D=7/19%OT=21%CT=%CU=41534%PV=Y%DS=2%DC=T%G=N%TM=687ADA3A%P=x86_64-pc-linux-gnu)
+SEQ(CI=RD%TS=9)
+SEQ(SP=109%GCD=1%ISR=10B%TI=Z%CI=RD%TS=A)
+OPS(O1=M509ST11NW7%O2=M509ST11NW7%O3=M509NNT11NW7%O4=M509ST11NW7%O5=M509ST11NW7%O6=M509ST11)
+WIN(W1=68DF%W2=68DF%W3=68DF%W4=68DF%W5=68DF%W6=68DF)
+ECN(R=Y%DF=Y%T=40%W=6903%O=M509NNSNW7%CC=Y%Q=)
+T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)
+T2(R=N)
+T3(R=N)
+T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)
+T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)
+T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)
+T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)
+U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)
+IE(R=Y%DFI=N%T=40%CD=S)
+
+Uptime guess: 26.952 days (since Sun Jun 22 02:44:06 2025)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=265 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 443/tcp)
+HOP RTT      ADDRESS
+1   89.94 ms 10.14.0.1
+2   90.05 ms 10.10.11.80
+
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jul 19 01:35:22 2025 -- 1 IP address (1 host up) scanned in 15.09 seconds
