@@ -1,0 +1,75 @@
+# Nmap 7.95 scan initiated Tue Jul 22 02:27:07 2025 as: /usr/lib/nmap/nmap --privileged -sF -A -oN nmap_sf.txt 10.10.207.200
+Nmap scan report for 10.10.207.200
+Host is up (0.050s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.13 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 db:f2:69:5f:c1:a0:e8:a0:c6:c4:d9:6e:14:2d:5b:6d (RSA)
+|   256 45:b9:ac:1b:eb:e6:bf:6f:8a:48:96:83:fc:bf:94:56 (ECDSA)
+|_  256 97:2c:50:f2:ca:fc:bc:ce:88:bf:8c:1e:4d:a7:e8:d0 (ED25519)
+80/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: The Cheese Shop
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+4444/tcp open  krb524?
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LDAPBindReq, LDAPSearchReq, LPDString, NULL, RPCCheck, RTSPRequest, SMBProgNeg, SSLSessionReq, SSLv23SessionReq, TLSSessionReq, TerminalServerCookie, X11Probe: 
+|     HTTP/1.200 OK
+|_    oServer: Mac_OS_X-x86_64-HHPId, UPnP/8, PMS/g?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port4444-TCP:V=7.95%I=7%D=7/22%Time=687EDADE%P=x86_64-pc-linux-gnu%r(NU
+SF:LL,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/
+SF:8,\x20PMS/g\?\r\n\n")%r(GetRequest,40,"HTTP/1\.200\x20OK\r\noServer:\x2
+SF:0Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(SSLSessionReq,4
+SF:0,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x
+SF:20PMS/g\?\r\n\n")%r(TLSSessionReq,40,"HTTP/1\.200\x20OK\r\noServer:\x20
+SF:Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(SSLv23SessionReq
+SF:,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,
+SF:\x20PMS/g\?\r\n\n")%r(GenericLines,40,"HTTP/1\.200\x20OK\r\noServer:\x2
+SF:0Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(HTTPOptions,40,
+SF:"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20
+SF:PMS/g\?\r\n\n")%r(RTSPRequest,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_
+SF:OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(RPCCheck,40,"HTTP/1\
+SF:.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\
+SF:r\n\n")%r(DNSVersionBindReqTCP,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac
+SF:_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(DNSStatusRequestTCP
+SF:,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,
+SF:\x20PMS/g\?\r\n\n")%r(Help,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_
+SF:X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(TerminalServerCookie,40
+SF:,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x2
+SF:0PMS/g\?\r\n\n")%r(Kerberos,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS
+SF:_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(SMBProgNeg,40,"HTTP/1\
+SF:.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\
+SF:r\n\n")%r(X11Probe,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64
+SF:-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(FourOhFourRequest,40,"HTTP/1\.2
+SF:00\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\
+SF:n\n")%r(LPDString,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-
+SF:HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")%r(LDAPSearchReq,40,"HTTP/1\.200\x2
+SF:0OK\r\noServer:\x20Mac_OS_X-x86_64-HHPId,\x20UPnP/8,\x20PMS/g\?\r\n\n")
+SF:%r(LDAPBindReq,40,"HTTP/1\.200\x20OK\r\noServer:\x20Mac_OS_X-x86_64-HHP
+SF:Id,\x20UPnP/8,\x20PMS/g\?\r\n\n");
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=7/22%OT=22%CT=1%CU=35350%PV=Y%DS=2%DC=T%G=Y%TM=687EDB1
+OS:0%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=106%TI=Z%TS=A)SEQ(SP=104%GC
+OS:D=1%ISR=108%TI=Z%CI=Z%TS=A)SEQ(SP=106%GCD=1%ISR=109%TI=Z%CI=Z%TS=A)SEQ(S
+OS:P=106%GCD=1%ISR=10A%TI=Z%CI=Z%TS=A)SEQ(SP=FF%GCD=1%ISR=107%TI=Z%TS=A)OPS
+OS:(O1=M509ST11NW7%O2=M509ST11NW7%O3=M509NNT11NW7%O4=M509ST11NW7%O5=M509ST1
+OS:1NW7%O6=M509ST11)WIN(W1=F4B3%W2=F4B3%W3=F4B3%W4=F4B3%W5=F4B3%W6=F4B3)ECN
+OS:(R=Y%DF=Y%T=40%W=F507%O=M509NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=A
+OS:S%RD=0%Q=)T2(R=N)T3(R=N)T4(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%
+OS:Q=)T5(R=N)T5(R=Y%DF=Y%T=40%W=F4B3%S=O%A=S+%F=AS%O=M509ST11NW7%RD=0%Q=)T6
+OS:(R=N)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=N)T7(R=Y%DF=Y%T=40
+OS:%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G
+OS:%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT      ADDRESS
+1   49.52 ms 10.14.0.1
+2   49.99 ms 10.10.207.200
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Jul 22 02:28:00 2025 -- 1 IP address (1 host up) scanned in 53.22 seconds

@@ -1,0 +1,1 @@
+# Nmap 7.95 scan initiated Mon Jul 21 05:26:34 2025 as: /usr/lib/nmap/nmap --privileged -sV -p- -oN nmap.txt -v 10.10.98.165

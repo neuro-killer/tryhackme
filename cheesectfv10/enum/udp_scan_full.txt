@@ -1,0 +1,40 @@
+# Nmap 7.95 scan initiated Tue Jul 22 03:50:55 2025 as: /usr/lib/nmap/nmap -sU -p1-1000 -v -T4 -Pn -oN udp_scan_full.txt 10.10.207.200
+Increasing send delay for 10.10.207.200 from 0 to 50 due to 11 out of 17 dropped probes since last increase.
+Warning: 10.10.207.200 giving up on port because retransmission cap hit (6).
+Increasing send delay for 10.10.207.200 from 200 to 400 due to 11 out of 11 dropped probes since last increase.
+Increasing send delay for 10.10.207.200 from 400 to 800 due to 11 out of 12 dropped probes since last increase.
+Nmap scan report for 10.10.207.200
+Host is up (0.052s latency).
+Not shown: 972 closed udp ports (port-unreach)
+PORT     STATE         SERVICE
+14/udp   open|filtered unknown
+68/udp   open|filtered dhcpc
+83/udp   open|filtered mit-ml-dev
+90/udp   open|filtered dnsix
+106/udp  open|filtered 3com-tsmux
+115/udp  open|filtered sftp
+170/udp  open|filtered print-srv
+219/udp  open|filtered uarps
+228/udp  open|filtered unknown
+232/udp  open|filtered unknown
+246/udp  open|filtered dsp3270
+254/udp  open|filtered unknown
+280/udp  open|filtered http-mgmt
+382/udp  open|filtered hp-managed-node
+393/udp  open|filtered dis
+409/udp  open|filtered prm-nm
+411/udp  open|filtered rmt
+526/udp  open|filtered tempo
+550/udp  open|filtered new-rwho
+594/udp  open|filtered tpip
+598/udp  open|filtered sco-websrvrmg3
+746/udp  open|filtered unknown
+764/udp  open|filtered omserv
+810/udp  open|filtered fcp-udp
+876/udp  open|filtered unknown
+944/udp  open|filtered unknown
+968/udp  open|filtered unknown
+1000/udp open|filtered ock
+
+Read data files from: /usr/share/nmap
+# Nmap done at Tue Jul 22 04:08:31 2025 -- 1 IP address (1 host up) scanned in 1055.76 seconds

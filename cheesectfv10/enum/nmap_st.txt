@@ -1,0 +1,6 @@
+# Nmap 7.95 scan initiated Mon Jul 21 05:19:54 2025 as: /usr/lib/nmap/nmap --privileged -sT -Pn -p- --max-retries 2 --host-timeout 5m -oN nmap_st.txt 10.10.98.165
+Warning: 10.10.98.165 giving up on port because retransmission cap hit (2).
+Nmap scan report for 10.10.98.165
+Host is up (0.082s latency).
+Skipping host 10.10.98.165 due to host timeout
+# Nmap done at Mon Jul 21 05:25:01 2025 -- 1 IP address (1 host up) scanned in 306.63 seconds
